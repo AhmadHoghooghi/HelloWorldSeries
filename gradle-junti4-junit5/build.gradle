@@ -1,0 +1,43 @@
+apply plugin: 'java-library'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+
+repositories {
+	mavenCentral()
+}
+
+ext.junitJupiterVersion = '5.1.0'
+
+ext.junit4Version        = '4.12'
+ext.junitVintageVersion  = '4.12.1'
+
+ext.junitPlatformVersion = '1.1.0'
+
+dependencies {
+	// JUnit Jupiter API and TestEngine implementation
+	testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
+	testRuntime("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+
+	testCompile("junit:junit:${junit4Version}")
+	testRuntime("org.junit.vintage:junit-vintage-engine:${junitVintageVersion}") //allows JUnit 3 and JUnit 4 tests to run
+
+	//testRuntime("org.junit.platform:junit-platform-launcher:${junitPlatformVersion}") 
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.0'
+    }
+}
+
+junitPlatform {
+    //platformVersion '1.1.0' // optional, defaults to plugin version
+    //reportsDir file('build/test-results/junit-platform') // this is the default
+    enableStandardTestTask true
+    // selectors (optional)
+    // filters (optional)
+    // logManager (optional)
+}

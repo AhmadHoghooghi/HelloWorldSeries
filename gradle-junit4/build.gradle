@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //testCompile 'junit:junit:4.12'
+    //it seems "compile" configuration for dependencies is
+    //the old version of implementation. accordingly
+    // testCompile will be testImplementation after version 3
+    //without testCompile and only with testImplementation it works
+    testImplementation 'junit:junit:4.12'
+}
+
