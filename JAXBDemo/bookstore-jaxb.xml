@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bookStore>
+    <name>bestBS</name>
+    <bookList>
+        <book>
+            <documentName>book1</documentName>
+            <author>author1</author>
+            <isbn>1</isbn>
+        </book>
+        <book>
+            <documentName>book2</documentName>
+            <author>author2</author>
+            <isbn>3</isbn>
+        </book>
+        <book>
+            <documentName>book3</documentName>
+            <author>author3</author>
+            <isbn>3</isbn>
+        </book>
+    </bookList>
+    <location>NY</location>
+</bookStore>
