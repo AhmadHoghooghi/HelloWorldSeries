@@ -2,8 +2,12 @@
 
 # Java SE API
 * [JAXB](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/JAXBDemo)
+
 Marshal and UnMarshal POJO to XML
 # Java EE
+[MVC with Servlet & JSP](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/MVC with ServletJSP)
+
+An Example from chapter 9 of [Murach's Java Servlets and JSP, 3rd Edition](https://www.amazon.com/Murachs-Java-Servlets-JSP-Murach/dp/1890774782) with a little refactoring.
 # Other ServerSide frameworks
 # Tools
 ## Build Tools
