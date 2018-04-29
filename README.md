@@ -7,7 +7,7 @@
 
 # Java EE
 * [MVC with Servlet & JSP](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/MVC%20with%20ServletJSP): An Example from chapter 9 of [Murach's Java Servlets and JSP, 3rd Edition](https://www.amazon.com/Murachs-Java-Servlets-JSP-Murach/dp/1890774782) with a little refactoring.
-
+* [JAX-RS HelloUser](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/JAX-RS/upload-webservice):
 # Other ServerSide frameworks
 
 # Tools
