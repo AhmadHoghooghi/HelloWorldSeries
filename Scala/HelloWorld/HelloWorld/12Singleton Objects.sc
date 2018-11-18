@@ -1,0 +1,1 @@
+// 12Singleton Objects.sc

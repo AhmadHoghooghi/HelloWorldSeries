@@ -1,0 +1,1 @@
+C:\Program Files\JetBrains\IntelliJ IDEA 2018.1.2\bin\
