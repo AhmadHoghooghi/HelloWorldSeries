@@ -1,0 +1,51 @@
+#items {
+    width: 49.8%;
+    /*display: inline;*/
+    float: right;
+}
+
+#items-header {
+    height: 10%;
+    border: 2px solid rgba(32, 83, 200, 0.72);
+    border-radius: 5px;
+    text-align: center;
+    color: #2053c8;
+    font-size: 2em;
+}
+
+#item-list {
+
+    overflow-y: auto;
+    height: 72%;
+    border: 2px solid rgba(71, 154, 210, 0.72);
+    border-radius: 5px;
+    margin: 3px;
+}
+
+.item-div {
+    border: 2px solid rgba(168, 191, 210, 0.72);
+    border-radius: 5px;
+    margin: 5px;
+}
+
+#item-table {
+    width: 100%;
+}
+
+#add-item {
+    text-align: center;
+    border: 2px solid rgba(71, 154, 210, 0.72);
+    height: 13%;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+#add-item-table{
+    width: 100%;
+}
+
+.item-category{
+    border: 1px solid #11d2ae;
+    border-radius: 2px;
+    background-color: #11ecc4;
+}

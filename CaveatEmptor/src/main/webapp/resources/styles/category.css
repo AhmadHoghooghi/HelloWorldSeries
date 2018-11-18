@@ -1,0 +1,60 @@
+#categories {
+    width: 49.8%;
+    float: left;
+}
+
+#parent-category-name {
+    display: block;
+    width: 100%;
+    text-align: center
+}
+
+#categories-header {
+    height: 10%;
+    border: 2px solid rgba(17, 210, 174, 0.72);
+    border-radius: 5px;
+    text-align: center;
+    color: #11d2ae;
+    font-size: 2em;
+}
+
+#category-list {
+    overflow-y: auto;
+    height: 72%;
+    border: 2px solid rgba(145, 210, 181, 0.72);
+    border-radius: 5px;
+    margin: 3px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.upper-level-category-button {
+    margin: auto;
+    display: block;
+    width: 80%;
+    /*align: center;*/
+}
+
+#add-category {
+    text-align: center;
+    border: 2px solid rgba(145, 210, 181, 0.72);
+    height: 13%;
+    border-radius: 5px;
+    margin: 3px;
+
+}
+
+#add-category-form {
+    display: inline-block;
+    padding: auto auto;
+}
+
+#new-category-text {
+    width: 60%;
+}
+
+#delete-form {
+    display: inline;
+}

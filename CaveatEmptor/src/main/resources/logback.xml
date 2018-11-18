@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--
+            %d{yyyy-MM-dd_HH:mm:ss.SSS}
+            -->
+            <Pattern> %-5level %-36logger{50} - %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <!--TRACE 	DEBUG 	INFO 	WARN 	ERROR		OFF-->
+    <logger name="org.hibernate" level="WARN" />
+    <logger name="org.hibernate.SQL" level="WARN" />
+    <logger name="org.hibernate.type" level="WARN" />
+    <logger name="org.eclipse.jetty" level="WARN" />
+    <logger name="org.springframework" level="WARN" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
