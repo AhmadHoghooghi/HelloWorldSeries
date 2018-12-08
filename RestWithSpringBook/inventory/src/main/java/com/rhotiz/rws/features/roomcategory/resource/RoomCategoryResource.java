@@ -1,5 +1,6 @@
 package com.rhotiz.rws.features.roomcategory.resource;
 
+import com.rhotiz.rws.api.classes.ApiResponse;
 import com.rhotiz.rws.features.roomcategory.service.RoomCategoryService;
 import com.rhotiz.rws.model.Room;
 import com.rhotiz.rws.model.RoomCategory;
@@ -20,33 +21,37 @@ public class RoomCategoryResource {
     RoomCategoryService rcService;
 
     @RequestMapping(value = "room-category/{id}",method = RequestMethod.GET)
-    public RoomCategory getRoomCategoryById(@PathVariable Long id){
-        return rcService.find(id);
+    public ApiResponse getRoomCategoryById(@PathVariable Long id){
+        return ApiResponse.ofSingleData(rcService.find(id));
     }
 
     @RequestMapping(value = "room-category/{id}",method = RequestMethod.DELETE)
-    public void deleteRoomCategoryById(@PathVariable Long id){
+    public ApiResponse deleteRoomCategoryById(@PathVariable Long id){
         rcService.delete(id);
+        return ApiResponse.DELETED();
     }
 
     @RequestMapping(value = "room-categories", method = RequestMethod.POST)
-    public ResponseEntity<RoomCategory> saveRoomCategory(@RequestBody RoomCategory rc, UriComponentsBuilder ucb){
+    @ResponseStatus(HttpStatus.CREATED)
+    public ResponseEntity<ApiResponse> saveRoomCategory(@RequestBody RoomCategory rc, UriComponentsBuilder ucb){
         RoomCategory dbrc = rcService.save(rc);
         HttpHeaders headers = new HttpHeaders();
-        URI location = ucb.path("/inventory").path("room-category").path(String.valueOf(dbrc.getId())).build().toUri();
+        URI location = ucb.path("/inventory").path("/room-category").path("/"+String.valueOf(dbrc.getId())).build().toUri();
         headers.setLocation(location);
-        ResponseEntity<RoomCategory> responseEntity = new ResponseEntity<>(headers,HttpStatus.CREATED);
-        return responseEntity;
+        ResponseEntity<ApiResponse> apiResponseResponseEntity = new ResponseEntity<>(ApiResponse.CREATED(), headers, HttpStatus.CREATED);
+        return apiResponseResponseEntity;
     }
 
     @RequestMapping(value = "room-category/{id}",method = RequestMethod.PUT)
-    public void updateRoomCategory(@PathVariable Long id,@RequestBody RoomCategory editedRoomCategory){
+    public ApiResponse updateRoomCategory(@PathVariable Long id,@RequestBody RoomCategory editedRoomCategory){
         editedRoomCategory.setId(id);
         rcService.update(editedRoomCategory);
+        return ApiResponse.UPDATED();
     }
 
     @RequestMapping(value = "room-categories",method = RequestMethod.GET)
-    public List<RoomCategory> getAll(){
-        return rcService.getAll();
+    public ApiResponse getAll(){
+        return ApiResponse.ofSingleData(rcService.getAll());
+
     }
 }
