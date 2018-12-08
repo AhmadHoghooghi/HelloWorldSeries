@@ -10,6 +10,8 @@
 * [JAX-RS HelloUser](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/JAX-RS/upload-webservice):
 
 # Other ServerSide frameworks
+* [CaveatEmptor](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/CaveatEmptor) Spring MVC project with Spring 4 and Hibernate. Explicit Configuration and JSP view. See Three layer Architecture in this Porject. `CaveatEmptor` is Example of  [Java Persistence with Hibernate](https://www.manning.com/books/java-persistence-with-hibernate-second-edition) Book.
+
 * [Spring-WebService](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/webservice-spring): Simple Web Service project with Spring, Integrated Tested using: `maven-failsafe-plugin`, `jetty-maven-plugin`, and Spring 4 `RestTemplate` class. JUnit and Hamcrest are also used in tests.
 
 * [Packt Book Building a RESTful Web Service with Spring Example](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/RestWithSpringBook): Example of Book: [Building a RESTful Web Service with Spring](https://www.packtpub.com/web-development/building-restful-web-service-spring).
