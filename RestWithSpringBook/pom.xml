@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.rthoiz.rest-with-spring</groupId>
+    <artifactId>rest-with-spring</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>common</module>
+        <module>inventory</module>
+        <module>availability</module>
+        <module>booking</module>
+        <module>billing</module>
+        <module>all</module>
+    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin>
+            <!--<plugin>-->
+            <!--this has problem with tomcat-embed-core which spring boot adds to run app internally-->
+                <!--&lt;!&ndash;to run app with this plugin : mvn jetty:start&ndash;&gt;-->
+                <!--<groupId>org.eclipse.jetty</groupId>-->
+                <!--<artifactId>jetty-maven-plugin</artifactId>-->
+                <!--<version>9.4.14.v20181114</version>-->
+                <!--<configuration>-->
+                    <!--<stopKey>DIE</stopKey>-->
+                    <!--<stopPort>9091</stopPort>-->
+                    <!--<systemProperties>-->
+                        <!--<systemProperty>-->
+                            <!--<name>jetty.port</name>-->
+                            <!--<value>9090</value>-->
+                        <!--</systemProperty>-->
+                    <!--</systemProperties>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        </plugins>
+
+    </build>
+
+
+</project>

@@ -12,6 +12,8 @@
 # Other ServerSide frameworks
 * [Spring-WebService](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/webservice-spring): Simple Web Service project with Spring, Integrated Tested using: `maven-failsafe-plugin`, `jetty-maven-plugin`, and Spring 4 `RestTemplate` class. JUnit and Hamcrest are also used in tests.
 
+* [Packt Book Building a RESTful Web Service with Spring Example](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/RestWithSpringBook): Example of Book: [Building a RESTful Web Service with Spring](https://www.packtpub.com/web-development/building-restful-web-service-spring).
+
 
 # Tools
 ## Build Tools
