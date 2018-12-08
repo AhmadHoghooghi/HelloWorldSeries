@@ -4,7 +4,7 @@ public class ApiResponse {
     private ApiResponseStatus status;
     private Object data;
     private ApiError error;
-    private int currentPageNumber;
+    private Integer currentPageNumber;
     private String nextPage;
     private String previousPage;
     private Long total;
@@ -97,11 +97,11 @@ public class ApiResponse {
         this.error = error;
     }
 
-    public int getCurrentPageNumber() {
+    public Integer getCurrentPageNumber() {
         return currentPageNumber;
     }
 
-    public void setCurrentPageNumber(int currentPageNumber) {
+    public void setCurrentPageNumber(Integer currentPageNumber) {
         this.currentPageNumber = currentPageNumber;
     }
 
