@@ -42,7 +42,15 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public List<Room> getByCategoryId(Long id) {
+    public List<Room> findByCategoryId(Long id) {
         return roomRepository.getByCategoryId(id);
+    }
+
+    @Override
+    public List<Room> findAll(int startIndex, int num) {
+        List<Room> queriedRooms = roomRepository.findAll(startIndex, num);
+        Long count = roomRepository.countAll();
+        return queriedRooms;
+        //add pagination here using rest pagination
     }
 }

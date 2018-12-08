@@ -11,5 +11,6 @@ public interface RoomService {
     void delete(Long id);
     Room save(Room room);
     Room save(RoomDTO roomDTO);
-    List<Room> getByCategoryId(Long id);
+    List<Room> findByCategoryId(Long id);
+    List<Room> findAll(int startIndex, int num);
 }

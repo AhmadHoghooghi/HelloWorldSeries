@@ -1,6 +1,7 @@
 package com.rhotiz.rws.features.room.resource;
 
 import com.rhotiz.rws.api.classes.ApiResponse;
+import com.rhotiz.rws.features.room.exceptions.RoomNotFoundException;
 import com.rhotiz.rws.features.room.service.RoomMapper;
 import com.rhotiz.rws.model.Room;
 import com.rhotiz.rws.features.room.service.RoomService;
@@ -25,6 +26,9 @@ public class RoomResource {
     @RequestMapping(value = "room/{id}",method = RequestMethod.GET)
     public ApiResponse getRoomById(@PathVariable Long id){
         Room room = roomService.find(id);
+        if (room == null) {
+            throw new RoomNotFoundException(id);
+        }
         RoomDTO roomDTO = roomMapper.toDTO(room);
         return ApiResponse.ofSingleData(roomDTO);
     }
@@ -52,9 +56,18 @@ public class RoomResource {
         return ApiResponse.UPDATED();
     }
 
+    @RequestMapping(value = "rooms", method = RequestMethod.GET)
+    public ApiResponse findAllRooms(
+            @RequestParam(value = "startIndex",required = false, defaultValue = "0") int startIndex
+            ,@RequestParam(value = "num",required = false, defaultValue = "10") int num){
+        List<Room> all = roomService.findAll(startIndex, num);
+        //this should return pagination type
+        return ApiResponse.ofSingleData(all);
+    }
+
     @RequestMapping(value = "rooms/room-category/{id}", method = RequestMethod.GET)
     public List<Room> getByCategoryId(@PathVariable Long id){
-        List<Room> rooms = roomService.getByCategoryId(id);
+        List<Room> rooms = roomService.findByCategoryId(id);
         return rooms;
     }
 }
