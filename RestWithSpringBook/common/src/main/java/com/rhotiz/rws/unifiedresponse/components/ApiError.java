@@ -1,4 +1,4 @@
-package com.rhotiz.rws.api.classes;
+package com.rhotiz.rws.unifiedresponse.components;
 
 public class ApiError {
     private String errorCode;
