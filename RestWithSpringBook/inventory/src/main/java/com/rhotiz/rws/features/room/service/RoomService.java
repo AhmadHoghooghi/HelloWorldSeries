@@ -2,6 +2,7 @@ package com.rhotiz.rws.features.room.service;
 
 import com.rhotiz.rws.features.room.resource.RoomDTO;
 import com.rhotiz.rws.model.Room;
+import com.rhotiz.rws.unifiedresponse.pagination.pages.Page;
 
 import java.util.List;
 
@@ -12,5 +13,5 @@ public interface RoomService {
     Room save(Room room);
     Room save(RoomDTO roomDTO);
     List<Room> findByCategoryId(Long id);
-    List<Room> findAll(int startIndex, int num);
+    Page findAllInPage(Long startIndex, Long num);
 }

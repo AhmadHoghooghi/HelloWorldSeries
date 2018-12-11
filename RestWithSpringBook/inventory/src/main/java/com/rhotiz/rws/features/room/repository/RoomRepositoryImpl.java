@@ -50,7 +50,7 @@ public class RoomRepositoryImpl implements RoomRepository {
     }
 
     @Override
-    public List<Room> findAll(int startIndex, int num) {
+    public List<Room> findAll(Long startIndex, Long num) {
         String queryString = "select room from Room as room order by room.id ";
         Query query = em.createQuery(queryString);
         query.setFirstResult(startIndex);

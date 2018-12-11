@@ -13,9 +13,9 @@ public class WebApplication {
 
 //to do: configure json message converted not to serialize nulls
 //to do: add error handling
-//to do: postman test findAll for room
+//to do: postman test findAllInPage for room
 //to do: add apiResponse to room-category
-//to do: postman test findAll for room-category
+//to do: postman test findAllInPage for room-category
 //todo: add pagination functionality to get rooms
 //todo: add pagination functionality to get room-categories
 //todo: add unit tests

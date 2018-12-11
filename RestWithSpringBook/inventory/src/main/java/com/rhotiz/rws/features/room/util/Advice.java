@@ -1,7 +1,7 @@
 package com.rhotiz.rws.features.room.util;
 
-import com.rhotiz.rws.api.classes.ApiError;
-import com.rhotiz.rws.api.classes.ApiResponse;
+import com.rhotiz.rws.unifiedresponse.components.ApiError;
+import com.rhotiz.rws.unifiedresponse.components.ApiResponse;
 import com.rhotiz.rws.features.room.exceptions.RoomNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

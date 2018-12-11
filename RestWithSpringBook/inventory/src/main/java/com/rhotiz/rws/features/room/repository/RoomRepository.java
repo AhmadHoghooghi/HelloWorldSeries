@@ -10,7 +10,7 @@ public interface RoomRepository {
     void update(Room room);
     void delete(Long id);
     Room save(Room room);
-    List<Room> findAll(int startIndex, int Num);
+    List<Room> findAll(Long startIndex, Long Num);
     List<Room> getByCategoryId(Long id);
     Long countAll();
 }

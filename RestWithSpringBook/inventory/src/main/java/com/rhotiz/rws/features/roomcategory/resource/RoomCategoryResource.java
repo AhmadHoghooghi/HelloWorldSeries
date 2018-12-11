@@ -1,8 +1,7 @@
 package com.rhotiz.rws.features.roomcategory.resource;
 
-import com.rhotiz.rws.api.classes.ApiResponse;
+import com.rhotiz.rws.unifiedresponse.components.ApiResponse;
 import com.rhotiz.rws.features.roomcategory.service.RoomCategoryService;
-import com.rhotiz.rws.model.Room;
 import com.rhotiz.rws.model.RoomCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/inventory")
