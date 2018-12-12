@@ -13,4 +13,5 @@ public interface RoomRepository {
     List<Room> findAll(Long startIndex, Long Num);
     List<Room> getByCategoryId(Long id);
     Long countAll();
+    List<Room> findAll();
 }

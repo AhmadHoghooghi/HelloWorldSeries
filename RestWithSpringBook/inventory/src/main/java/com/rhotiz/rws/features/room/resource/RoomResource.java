@@ -5,6 +5,7 @@ import com.rhotiz.rws.features.room.exceptions.RoomNotFoundException;
 import com.rhotiz.rws.features.room.service.RoomMapper;
 import com.rhotiz.rws.model.Room;
 import com.rhotiz.rws.features.room.service.RoomService;
+import com.rhotiz.rws.unifiedresponse.pagination.exception.BadPaginationRequestException;
 import com.rhotiz.rws.unifiedresponse.pagination.pages.Page;
 import com.rhotiz.rws.unifiedresponse.pagination.pages.PageDTO;
 import com.rhotiz.rws.unifiedresponse.pagination.urls.URIComponents;
@@ -59,16 +60,27 @@ public class RoomResource {
         return ApiResponse.UPDATED();
     }
 
-    @RequestMapping(value = "rooms", method = RequestMethod.GET)
-    public ApiResponse findAllRooms(
-            @RequestParam(value = "startIndex", required = false, defaultValue = "0") Long startIndex
-            , @RequestParam(value = "num", required = false, defaultValue = "10") Long num
-            ,UriComponentsBuilder ucb) {
+    @RequestMapping(value = "rooms", method = RequestMethod.GET,params = {"startIndex","num"})
+    public ApiResponse findAllRoomsAsPage(
+            @RequestParam(value = "startIndex", required = true, defaultValue = "0") Long startIndex
+            , @RequestParam(value = "num", required = true, defaultValue = "10") Long num
+            ,UriComponentsBuilder ucb) throws BadPaginationRequestException {
+        if (num.equals(0L) || num<0) {
+            throw new BadPaginationRequestException(startIndex,num);
+        }
         Page page = roomService.findAllInPage(startIndex, num);
-        URIComponents uriComponents = new URIComponents(ucb.build().toUriString(),"startIndex","num");
+        //todo: find a way to extract "/inventory/rooms" from ucb or some thing else. this will in url design refactoring.
+        String resourceBaseURI = ucb.path("/inventory/rooms").build().toUriString();
+        URIComponents uriComponents = new URIComponents(resourceBaseURI,"startIndex","num");
         PageDTO pageDTO = new PageDTO(page, uriComponents);
         //this should return pagination type
         return ApiResponse.ofPageDTO(pageDTO, pageDTO.getTotalCount());
+    }
+    @RequestMapping(value = "rooms", method = RequestMethod.GET)
+    public ApiResponse findAllRooms() {
+        List<Room> all = roomService.findAll();
+        //this should return pagination type
+        return ApiResponse.ofSingleData(all);
     }
 
     @RequestMapping(value = "rooms/room-category/{id}", method = RequestMethod.GET)

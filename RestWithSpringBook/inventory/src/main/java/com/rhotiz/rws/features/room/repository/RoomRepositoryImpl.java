@@ -53,8 +53,8 @@ public class RoomRepositoryImpl implements RoomRepository {
     public List<Room> findAll(Long startIndex, Long num) {
         String queryString = "select room from Room as room order by room.id ";
         Query query = em.createQuery(queryString);
-        query.setFirstResult(startIndex);
-        query.setMaxResults(num);
+        query.setFirstResult(startIndex.intValue());
+        query.setMaxResults(num.intValue());
         List resultList = query.getResultList();
         return convertObjectListToRoomLIst(resultList);
 
@@ -81,5 +81,13 @@ public class RoomRepositoryImpl implements RoomRepository {
         Query query = em.createQuery(queryString);
         Long count = (Long)query.getSingleResult();
         return count;
+    }
+
+    @Override
+    public List<Room> findAll() {
+        String queryString = "select room from Room as room order by room.id ";
+        Query query = em.createQuery(queryString);
+        List resultList = query.getResultList();
+        return convertObjectListToRoomLIst(resultList);
     }
 }

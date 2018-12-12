@@ -13,5 +13,6 @@ public interface RoomService {
     Room save(Room room);
     Room save(RoomDTO roomDTO);
     List<Room> findByCategoryId(Long id);
+    List<Room> findAll();
     Page findAllInPage(Long startIndex, Long num);
 }

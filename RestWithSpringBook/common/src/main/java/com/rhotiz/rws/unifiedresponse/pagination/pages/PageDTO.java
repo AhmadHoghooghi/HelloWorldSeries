@@ -33,7 +33,7 @@ public class PageDTO {
              return Links.ofFirstOverFlowed(selfPageURI.asString(), nexPageURI.asString());
         }else if(currentPageNumber<pageCount){
              return Links.ofMiddlePage(prevPageURI.asString(), selfPageURI.asString(), nexPageURI.asString());
-        }else if(currentPageNumber==pageCount){
+        }else if(currentPageNumber.equals(pageCount)){
              return Links.ofLastPage(prevPageURI.asString(),selfPageURI.asString());
         }else {
             throw new RuntimeException("Wrong Conditioning in convertToProperPageSubclass");

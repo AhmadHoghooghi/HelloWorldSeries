@@ -44,27 +44,7 @@ public class Page {
     public Long getMaxCountInPage() {
         return maxCountInPage;
     }
-    //    public Page(List<T> data, int startIndex, int maxCountInPage, long total){
-//
-//    }
-//    //todo refactor firstIndex in project o startIndex
-//    private static Page convertToProperPageSubclass(String baseURL, List<?> data, int startIndex, int maxCountInPage, long totoalCount
-//    ){
-//
-//        PageURIComponents paginationURI = new PageURIComponents(baseURL, PageURIComponents.startIndexQueryParamKey, PageURIComponents.countQueryParamKey);
-//
-//        if(currentPage == 1 && pageCount==1 && data.size()<=maxCountInPage){
-//            return new FirstPageNonOverFlowed(data);
-//        }else if(currentPage==1 && pageCount>1){
-//            return new FirstPageOverFlowed(paginationURI, data, maxCountInPage, totalCo);
-//        }else if(currentPage<pageCount){
-//            return new MiddlePage(paginationURI, data,maxCountInPage,startIndex,currentPage,total);
-//        }else if(currentPage==pageCount){
-//            return new FinalPage(paginationURI, data , maxCountInPage,startIndex,currentPage,total);
-//        }else {
-//            throw new RuntimeException("Wrong Conditioning in convertToProperPageSubclass");
-//        }
-//    }
+
 
 
 }

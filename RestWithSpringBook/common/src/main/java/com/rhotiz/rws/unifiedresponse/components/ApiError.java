@@ -1,5 +1,9 @@
 package com.rhotiz.rws.unifiedresponse.components;
 
+/**
+ * 1000: RoomNotFoundException
+ * 2000: BadPaginationRequestException exception
+ */
 public class ApiError {
     private String errorCode;
     private String errorDescription;

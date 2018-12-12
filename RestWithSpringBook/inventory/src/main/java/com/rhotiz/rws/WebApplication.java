@@ -16,8 +16,15 @@ public class WebApplication {
 //to do: postman test findAllInPage for room
 //to do: add apiResponse to room-category
 //to do: postman test findAllInPage for room-category
-//todo: add pagination functionality to get rooms
-//todo: add pagination functionality to get room-categories
+
+//to do: add pagination functionality to get rooms
+//to do: add getAll functionality to get rooms
+//todo: make getAll functionality of rooms async
+
+//todo: add pagination functionality to get room-category
+//todo: add getAll functionality to get room-categories
+//todo: make getAll functionality of room-categories async
+
 //todo: add unit tests
 //todo: add integration tests
 //todo: add error handling to room post with validation

@@ -49,6 +49,11 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    public List<Room> findAll() {
+        return roomRepository.findAll();
+    }
+
+    @Override
     public Page findAllInPage(Long startIndex, Long maxCountInPage) {
         List<Room> queriedRooms = roomRepository.findAll(startIndex, maxCountInPage);
         Long totalCount = roomRepository.countAll();

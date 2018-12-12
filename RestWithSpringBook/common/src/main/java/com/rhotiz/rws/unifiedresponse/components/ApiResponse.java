@@ -29,7 +29,7 @@ public class ApiResponse {
     }
 
     private ApiResponse(ApiResponseStatus status, Links links, Object data, Long currentPageNumber,Long pageCount, Long totalCount){
-        new ApiResponse(status, data);
+        this(status, data);
         this.links = links;
         this.currentPageNumber = currentPageNumber;
         this.pageCount = pageCount;
@@ -60,13 +60,14 @@ public class ApiResponse {
     }
 
     public static ApiResponse ofPageDTO(PageDTO pageDTO, Long total){
-        return new ApiResponse(
+        ApiResponse apiResponse = new ApiResponse(
                 ApiResponseStatus.OK,
                 pageDTO.getLinks(),
                 pageDTO.getData(),
                 pageDTO.getCurrentPageNumber(),
                 pageDTO.getPageCount(),
                 pageDTO.getTotalCount());
+        return apiResponse;
     }
 
     public ApiResponseStatus getStatus() {
