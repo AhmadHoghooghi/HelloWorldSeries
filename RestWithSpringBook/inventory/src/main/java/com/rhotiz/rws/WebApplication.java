@@ -21,8 +21,8 @@ public class WebApplication {
 //to do: add getAll functionality to get rooms
 //todo: make getAll functionality of rooms async
 
-//todo: add pagination functionality to get room-category
-//todo: add getAll functionality to get room-categories
+//to do: add pagination functionality to get room-category
+//to do: add getAll functionality to get room-categories
 //todo: make getAll functionality of room-categories async
 
 //todo: add unit tests

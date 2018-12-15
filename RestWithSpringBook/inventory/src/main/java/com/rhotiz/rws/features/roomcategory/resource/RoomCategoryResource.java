@@ -3,6 +3,10 @@ package com.rhotiz.rws.features.roomcategory.resource;
 import com.rhotiz.rws.unifiedresponse.components.ApiResponse;
 import com.rhotiz.rws.features.roomcategory.service.RoomCategoryService;
 import com.rhotiz.rws.model.RoomCategory;
+import com.rhotiz.rws.unifiedresponse.pagination.exception.BadPaginationRequestException;
+import com.rhotiz.rws.unifiedresponse.pagination.pages.Page;
+import com.rhotiz.rws.unifiedresponse.pagination.pages.PageDTO;
+import com.rhotiz.rws.unifiedresponse.pagination.urls.URIComponents;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -50,6 +54,20 @@ public class RoomCategoryResource {
     @RequestMapping(value = "room-categories",method = RequestMethod.GET)
     public ApiResponse getAll(){
         return ApiResponse.ofSingleData(rcService.getAll());
+    }
 
+    @RequestMapping(value = "room-categories",method = RequestMethod.GET,params = {"startIndex","num"})
+    public ApiResponse getAllInPage(@RequestParam(value = "startIndex",required = true) Long startIndex,
+                                    @RequestParam(value = "num",required = true) Long num,
+                                    UriComponentsBuilder ucb) throws BadPaginationRequestException {
+        if(num<=0L){
+            throw new BadPaginationRequestException(startIndex,num);
+        }
+
+        Page page = rcService.findAllInPage(startIndex, num);
+        String baseUri = ucb.path("/inventory/room-categories").build().toUriString();
+        URIComponents uriComponents = new URIComponents(baseUri, "startIndex", "num");
+        PageDTO pageDTO = new PageDTO(page,uriComponents);
+        return ApiResponse.ofPageDTO(pageDTO);
     }
 }

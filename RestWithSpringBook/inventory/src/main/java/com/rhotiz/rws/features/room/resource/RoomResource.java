@@ -62,8 +62,8 @@ public class RoomResource {
 
     @RequestMapping(value = "rooms", method = RequestMethod.GET,params = {"startIndex","num"})
     public ApiResponse findAllRoomsAsPage(
-            @RequestParam(value = "startIndex", required = true, defaultValue = "0") Long startIndex
-            , @RequestParam(value = "num", required = true, defaultValue = "10") Long num
+            @RequestParam(value = "startIndex", required = true) Long startIndex
+            , @RequestParam(value = "num", required = true) Long num
             ,UriComponentsBuilder ucb) throws BadPaginationRequestException {
         if (num.equals(0L) || num<0) {
             throw new BadPaginationRequestException(startIndex,num);
@@ -74,7 +74,7 @@ public class RoomResource {
         URIComponents uriComponents = new URIComponents(resourceBaseURI,"startIndex","num");
         PageDTO pageDTO = new PageDTO(page, uriComponents);
         //this should return pagination type
-        return ApiResponse.ofPageDTO(pageDTO, pageDTO.getTotalCount());
+        return ApiResponse.ofPageDTO(pageDTO);
     }
     @RequestMapping(value = "rooms", method = RequestMethod.GET)
     public ApiResponse findAllRooms() {

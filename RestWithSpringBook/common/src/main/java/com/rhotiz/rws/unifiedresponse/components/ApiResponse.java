@@ -59,7 +59,7 @@ public class ApiResponse {
         return new ApiResponse(ApiResponseStatus.OK, data);
     }
 
-    public static ApiResponse ofPageDTO(PageDTO pageDTO, Long total){
+    public static ApiResponse ofPageDTO(PageDTO pageDTO){
         ApiResponse apiResponse = new ApiResponse(
                 ApiResponseStatus.OK,
                 pageDTO.getLinks(),
