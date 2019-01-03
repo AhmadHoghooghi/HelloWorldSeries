@@ -1,0 +1,45 @@
+<div style="margin-top:10px;">
+    <div class="row">
+        <div class="col-xs-12 form-group">
+            <div class="col-xs-12 col-sm-1">
+                <label>عنوان</label>
+            </div>
+            <div class="col-xs-12 col-sm-11 silver-back img-rounded">
+                {{data.event.title}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 form-group">
+            <div class="col-xs-12 col-sm-1">
+                <label>شرح</label>
+            </div>
+            <div class="col-xs-12 col-sm-11 silver-back img-rounded">
+                {{data.event.description}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6 form-group">
+            <div class="col-xs-12 col-md-3">
+                <label>زمان شروع</label>
+            </div>
+            <div class="col-xs-12 col-md-9 force-ltr silver-back img-rounded">
+                {{data.event.startDateTime}}
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 form-group">
+            <div class="col-xs-12 col-md-4">
+                <label>زمان اتمام</label>
+            </div>
+            <div class="col-xs-12 col-md-8 force-ltr silver-back img-rounded">
+                {{data.event.endDateTime}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pull-right">
+    <a class="btn btn-primary" ng-click="actions.showSaveOrUpdateDialog(data.event.id)">ویرایش</a>
+    <a ng-click="actions.back()" class="btn btn-default">بازگشت</a>
+</div>

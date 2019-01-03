@@ -1,0 +1,63 @@
+<form>
+    <div class="modal-header">
+        <button type="button" style="float: left" class="close" data-dismiss="modal" ng-click="actions.dismiss('')">
+            &times;
+        </button>
+        <h4 ng-if="id==null" class="modal-title">ایجاد</h4>
+        <h4 ng-if="id!=null" class="modal-title">ویرایش</h4>
+    </div>
+    <flash-message name="flash-in-modal">
+    </flash-message>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12 form-group">
+                <div class="col-xs-12 col-sm-1">
+                    <label for="eventTitle">عنوان</label>
+                </div>
+                <div class="col-xs-12 col-sm-11">
+                    <input class="form-control" type="text" id="eventTitle" ng-model="data.title">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 form-group">
+                <div class="col-xs-12 col-sm-1">
+                    <label for="eventDescription">شرح</label>
+                </div>
+                <div class="col-xs-12 col-sm-11">
+                    <input class="form-control" type="text" id="eventDescription" ng-model="data.description">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 form-group">
+                <div class="col-xs-12 col-md-3">
+                    <label for="eventStartDateTime">زمان شروع</label>
+                </div>
+                <div class="col-xs-12 col-md-9 force-ltr">
+                    <adm-dtp ng-model="data.startDateTime" options="controls.datePickerOptions" id="eventStartDateTime"
+                             full-data="startDateTime_detail" maxdate="{{endDateTime_detail.unix}}"
+                    ></adm-dtp>
+                    <!--class="form-control"-->
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6 form-group">
+                <div class="col-xs-12 col-md-4">
+                    <label for="eventEndDateTime">زمان اتمام</label>
+                </div>
+                <div class="col-xs-12 col-md-8 force-ltr">
+                    <adm-dtp ng-model="data.endDateTime" options="controls.datePickerOptions" id="eventEndDateTime"
+                             full-data="endDateTime_detail" mindate="{{startDateTime_detail.unix}}"
+                    ></adm-dtp>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" ng-click="actions.saveOrUpdate()" ng-disabled="!(data.startDateTime && data.startDateTime)">ثبت</button>
+        <button type="button" class="btn btn-default" ng-click="actions.dismiss('')">لغو</button>
+    </div>
+</form>
+
+
+
