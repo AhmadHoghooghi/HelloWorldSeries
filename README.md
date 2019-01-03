@@ -16,6 +16,7 @@
 
 * [Packt Book Building a RESTful Web Service with Spring Example](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/RestWithSpringBook): Example of Book: [Building a RESTful Web Service with Spring](https://www.packtpub.com/web-development/building-restful-web-service-spring).
 
+* [ASTA-Exercise-1 ](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/contacts/): Implementation of Exercise 1 of [ASTA](http://asta.ir/) on [JavaCup.ir](http://javacup.ir/javaee-exercise/). In theis Example a simple web application is implemented in 3 layer architecture according to conventions used in _ASTA.ir_. AngularJS and Bootstrap is used in front end. Its a single page application and RESTfull web service is used as for data retrieval from server. 
 
 # Tools
 ## Build Tools
