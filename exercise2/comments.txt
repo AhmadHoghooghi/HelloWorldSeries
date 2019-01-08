@@ -1,0 +1,6 @@
+1- make a base project (see initial commit (add62bdf ) and remove base entities.
+2- change xml configuration of spring to annotation based
+3- make modifications on url design of web services
+4- order is key word in h2 db, it should change to something like shopping order.
+5- while setting category to product can done on update, why should there be another url for it?
+6- List of project requirements are really blurry.

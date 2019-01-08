@@ -18,6 +18,8 @@
 
 * [ASTA-Exercise-1 ](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/contacts/): Implementation of Exercise 1 of [ASTA](http://asta.ir/) on [JavaCup.ir](http://javacup.ir/javaee-exercise/). In theis Example a simple web application is implemented in 3 layer architecture according to conventions used in _ASTA.ir_. AngularJS and Bootstrap is used in front end. Its a single page application and RESTfull web service is used as for data retrieval from server. 
 
+* [ASTA-Exercise-2 ](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/exercise2/): Implementation of Exercise 2 of [ASTA](http://asta.ir/) on [JavaCup.ir](http://javacup.ir/javaee-exercise2/). A theree layer rest based web application is developed which has four features. entities has relationships like `OneToMany`, `ManyToOne` and `ManyToMany`. Configuration is based on wise Architecture. there are integration tests on manager layer and below. Server type H2 db is used.
+
 # Tools
 ## Build Tools
 ### Gradle
