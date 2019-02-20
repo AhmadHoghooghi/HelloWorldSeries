@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<import resource="classpath:config/spring/wise-core-exceptions.xml"/>
+	<import resource="classpath:config/spring/wise-core-resources.xml"/>
+	<import resource="classpath:config/spring/wise-portal-ws-client.xml" />
+	<import resource="classpath:config/spring/wise-portal-security.xml"/>
+	<import resource="classpath:config/spring/wise-portal-cr.xml"/>
+	<import resource="classpath:ir/asta/wise/core/spring/wise-core-rest.xml"/>
+	<import resource="classpath:ir/asta/wise/core/spring/wise-core-jpa.xml"/>
+	<import resource="classpath:config/spring/wise-portal-query-client.xml" />
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:ir/asta/wise/core/properties/common.properties</value>
+				<value>classpath:ir/asta/wise/portal/config/portal-config.properties</value>
+				<value>classpath:config.properties</value>
+			</list>
+		</property>
+		<property name="systemPropertiesMode" value="2" />
+	</bean>
+
+   	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" parent="abstractEntityManagerFactory">
+      	<property name="packagesToScan" value="ir.asta.tutorial.dl.entities" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.dialect_resolvers">ir.asta.wise.core.data.hibernate.CustomDialectResolver</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+				<prop key="hibernate.cache.use_second_level_cache">${hibernate.use_cache}</prop>
+				<prop key="hibernate.cache.use_query_cache">${hibernate.use_cache}</prop>
+				<prop key="hibernate.show_sql">${hibernate.connection.show_sql}</prop>
+				<prop key="org.hibernate.envers.audit_table_suffix">_AUD</prop>
+				<prop key="org.hibernate.envers.audit_strategy">org.hibernate.envers.strategy.ValidityAuditStrategy</prop>
+				<prop key="org.hibernate.envers.do_not_audit_optimistic_locking_field">false</prop>
+			</props>
+		</property>
+   	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager"	proxy-target-class="true" />
+	
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" >
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+		
+	<context:component-scan base-package="ir.asta.tutorial.dl" />
+	<context:annotation-config />
+	
+	<bean id="applicationExceptionHandler" class="ir.asta.wise.core.datamanagement.exception.ApplicationExceptionHandler">
+		<property name="exceptionSerializer" ref="restExceptionSerializer"/>
+	</bean>
+	
+	<bean class="ir.asta.wise.core.web.rest.impl.MessageLoaderServiceImpl"
+		id="restMessageLoaderService">
+		<!-- <property name="delegate">
+			<bean class="ir.asta.wise.core.remoting.rs.RestClientFactoryBean">
+		  		<property name="providers">
+					<list>
+		            	<ref bean="jsonProvider"/>
+					</list>
+				</property>
+				<property name="serviceUrl"
+					value="http://localhost:${ports.webservice}/app1-service/rest" />
+				<property name="serviceInterface"
+					value="ir.asta.wise.core.web.rest.MessageLoaderService" />
+			</bean>
+		</property> -->
+	</bean>
+	
+	<bean id="liquibaseConfiguration" class="ir.asta.wise.core.data.liquibase.LiquibaseConfiguration">
+	</bean>
+	
+	<bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase" depends-on="liquibaseConfiguration">
+		
+		<property name="dataSource" ref="dataSource"/>
+		<property name="changeLog" value="classpath:config/liquibase/master.xml" />
+
+		<!-- contexts specifies the runtime contexts to use. -->
+		<property name="contexts" value="test, production" />
+	</bean>
+
+	<bean class="ir.asta.wise.core.util.db.SequenceGenerator">
+		<property name="sequenceName" value="test" />
+	</bean>
+	
+</beans>

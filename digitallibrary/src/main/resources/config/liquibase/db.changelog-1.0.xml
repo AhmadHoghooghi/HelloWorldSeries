@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="generator" failOnError="true" id="01_createRevInfoTable">
+        <preConditions onError="MARK_RAN" onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="REVINFO"/>
+            </not>
+        </preConditions>
+        <createTable tableName="REVINFO">
+            <column name="ID" type="NUMBER(10, 0)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="TIMESTAMP" type="NUMBER(19, 0)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USERIDENTIFIER" type="VARCHAR2(255 CHAR)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="generator" failOnError="true" id="02_changeSetForCreateTables-byGenerator">
+        <createTable tableName="DL_CONTENT_TYPE">
+            <column autoIncrement="true" name="DL_CONTENT_TYPE_ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="TITLE" type="nvarchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_06f-4160-9805-2bdc906304b5"/>
+            </column>
+            <column name="CODE_" type="nvarchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_f24-42bf-9938-74c6bd694f17"/>
+            </column>
+            <column name="SORT_ORDER" type="BIGINT">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_865-4668-8f62-9fa6ef9d2dbb"/>
+            </column>
+            <column name="creation_time" type="TIMESTAMP"/>
+            <column name="created_by" type="nvarchar(255)"/>
+            <column name="lastmodification_time" type="TIMESTAMP"/>
+            <column name="lastmodified_by" type="nvarchar(255)"/>
+            <column name="DELETED" type="NUMBER(1, 0)"/>
+            <column name="ADAPTIVE_TYPE_XML" type="CLOB"/>
+        </createTable>
+        <createTable tableName="DL_ATTACHMENT">
+            <column name="DL_ATTACHMENT_ID" type="nvarchar(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="TITLE" type="nvarchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_003-4cab-99d1-ab0889dea769"/>
+            </column>
+            <column name="CODE_" type="nvarchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_249-4094-ab9c-9aadf110d06b"/>
+            </column>
+            <column name="FILE_FILENAME" type="nvarchar(255)"/>
+            <column name="FILE_CONTENTTYPE" type="nvarchar(60)"/>
+            <column name="FILE_CONTENT" type="BLOB"/>
+            <column name="creation_time" type="TIMESTAMP"/>
+            <column name="created_by" type="nvarchar(255)"/>
+            <column name="lastmodification_time" type="TIMESTAMP"/>
+            <column name="lastmodified_by" type="nvarchar(255)"/>
+            <column name="FK_ATTACHMENTTYPE" type="BIGINT"/>
+            <column name="FK_CONTENT" type="nvarchar(255)"/>
+        </createTable>
+        <createTable tableName="DL_Content">
+            <column name="DL_CONTENT_ID" type="nvarchar(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="TITLE" type="nvarchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_723-4ac3-a401-b784d369da02"/>
+            </column>
+            <column name="CODE_" type="nvarchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_94f-44ac-ab07-ae09e99c9041"/>
+            </column>
+            <column name="FILE_FILENAME" type="nvarchar(255)"/>
+            <column name="FILE_CONTENTTYPE" type="nvarchar(60)"/>
+            <column name="FILE_CONTENT" type="BLOB"/>
+            <column name="PURCHASE_DATE" type="TIMESTAMP"/>
+            <column name="STATUS_" type="nvarchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="TIMESTAMP"/>
+            <column name="created_by" type="nvarchar(255)"/>
+            <column name="lastmodification_time" type="TIMESTAMP"/>
+            <column name="lastmodified_by" type="nvarchar(255)"/>
+            <column name="DELETED" type="NUMBER(1, 0)"/>
+            <column name="ADAPTIVE_DATA_XML" type="CLOB"/>
+            <column name="FK_CONTENTTYPE" type="BIGINT"/>
+            <column name="FK_LIBRARY" type="nvarchar(255)"/>
+        </createTable>
+        <createTable tableName="DL_Content_AUD">
+            <column name="REV" type="NUMBER(10, 0)"/>
+            <column name="REVEND" type="NUMBER(10, 0)"/>
+            <column name="REVTYPE" type="NUMBER(3, 0)"/>
+            <column name="DL_CONTENT_ID" type="nvarchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TITLE" type="nvarchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CODE_" type="nvarchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FILE_FILENAME" type="nvarchar(255)"/>
+            <column name="FILE_CONTENTTYPE" type="nvarchar(60)"/>
+            <column name="FILE_CONTENT" type="BLOB"/>
+            <column name="PURCHASE_DATE" type="TIMESTAMP"/>
+            <column name="STATUS_" type="nvarchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="TIMESTAMP"/>
+            <column name="created_by" type="nvarchar(255)"/>
+            <column name="lastmodification_time" type="TIMESTAMP"/>
+            <column name="lastmodified_by" type="nvarchar(255)"/>
+            <column name="DELETED" type="NUMBER(1, 0)"/>
+            <column name="ADAPTIVE_DATA_XML" type="CLOB"/>
+            <column name="FK_CONTENTTYPE" type="BIGINT"/>
+            <column name="FK_LIBRARY" type="nvarchar(255)"/>
+        </createTable>
+        <createTable tableName="DL_ATTACHMENT_TYPE">
+            <column autoIncrement="true" name="DL_ATTACHMENT_TYPE_ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="TITLE" type="nvarchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_764-4df6-be66-e5b9be40108f"/>
+            </column>
+            <column name="CODE_" type="nvarchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_3d3-4f94-81db-2e1f90b04e5d"/>
+            </column>
+            <column name="SORT_ORDER" type="BIGINT">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_35e-4ed0-8fc2-46218f2fc287"/>
+            </column>
+            <column name="creation_time" type="TIMESTAMP"/>
+            <column name="created_by" type="nvarchar(255)"/>
+            <column name="lastmodification_time" type="TIMESTAMP"/>
+            <column name="lastmodified_by" type="nvarchar(255)"/>
+            <column name="DELETED" type="NUMBER(1, 0)"/>
+            <column name="FK_TYPE" type="BIGINT"/>
+        </createTable>
+        <createTable tableName="DL_LIBRARY">
+            <column name="DL_LIBRARY_ID" type="nvarchar(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="TITLE" type="nvarchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="UK_fa5-4f7b-90c7-578342e723f2"/>
+            </column>
+            <column name="CODE_" type="nvarchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="TIMESTAMP"/>
+            <column name="created_by" type="nvarchar(255)"/>
+            <column name="lastmodification_time" type="TIMESTAMP"/>
+            <column name="lastmodified_by" type="nvarchar(255)"/>
+            <column name="DELETED" type="NUMBER(1, 0)"/>
+            <column name="FK_CONTENTTYPE" type="BIGINT"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="FK_ATTACHMENTTYPE" baseTableName="DL_ATTACHMENT"
+                                 constraintName="CN_dd1-45e6-bd09-991225d4094c"
+                                 referencedColumnNames="DL_ATTACHMENT_TYPE_ID"
+                                 referencedTableName="DL_ATTACHMENT_TYPE"/>
+        <addForeignKeyConstraint baseColumnNames="FK_CONTENT" baseTableName="DL_ATTACHMENT"
+                                 constraintName="CN_bc6-47ae-a3ae-f066732d94c7" referencedColumnNames="DL_CONTENT_ID"
+                                 referencedTableName="DL_Content"/>
+        <addForeignKeyConstraint baseColumnNames="FK_CONTENTTYPE" baseTableName="DL_Content"
+                                 constraintName="CN_00e-4c45-8bc3-b969bd42ea9f"
+                                 referencedColumnNames="DL_CONTENT_TYPE_ID" referencedTableName="DL_CONTENT_TYPE"/>
+        <addForeignKeyConstraint baseColumnNames="FK_LIBRARY" baseTableName="DL_Content"
+                                 constraintName="CN_b56-4e6c-b326-5fdceea779af" referencedColumnNames="DL_LIBRARY_ID"
+                                 referencedTableName="DL_LIBRARY"/>
+        <addForeignKeyConstraint baseColumnNames="REV" baseTableName="DL_Content_AUD"
+                                 constraintName="CN_638-4cbc-92a9-e7c1b9413920" referencedColumnNames="ID"
+                                 referencedTableName="REVINFO"/>
+        <addForeignKeyConstraint baseColumnNames="REVEND" baseTableName="DL_Content_AUD"
+                                 constraintName="CN_7cf-40fe-a427-fcf5f2792f25" referencedColumnNames="ID"
+                                 referencedTableName="REVINFO"/>
+        <addForeignKeyConstraint baseColumnNames="FK_TYPE" baseTableName="DL_ATTACHMENT_TYPE"
+                                 constraintName="CN_f86-4cdd-b9b5-3cb7c63608c0"
+                                 referencedColumnNames="DL_CONTENT_TYPE_ID" referencedTableName="DL_CONTENT_TYPE"/>
+        <addForeignKeyConstraint baseColumnNames="FK_CONTENTTYPE" baseTableName="DL_LIBRARY"
+                                 constraintName="CN_d05-46c3-894f-305485eb4de7"
+                                 referencedColumnNames="DL_CONTENT_TYPE_ID" referencedTableName="DL_CONTENT_TYPE"/>
+    </changeSet>
+    <changeSet author="generator" dbms="oracle, db2" failOnError="false" id="03_createSequence">
+        <createSequence sequenceName="HIBERNATE_SEQUENCE"/>
+    </changeSet>
+
+    <changeSet author="ahmad" failOnError="true" id="04_add_serial_column_to_content_table_and_its_aud">
+        <addColumn tableName="DL_CONTENT">
+            <column name="SERIAL" type="varchar(50)">
+                <constraints nullable="false" unique="true"></constraints>
+            </column>
+        </addColumn>
+        <addColumn tableName="DL_CONTENT_AUD">
+            <column name="SERIAL" type="varchar(50)">
+            </column>
+        </addColumn>
+    </changeSet>
+
+
+    <changeSet author="ahmad" failOnError="true" id="05_addConfidential_Level_to_Content">
+        <addColumn tableName="DL_Content">
+            <column name="confidential_level" type="BIGINT">
+                <constraints nullable="false"></constraints>
+            </column>
+        </addColumn>
+        <addForeignKeyConstraint
+                baseTableName="DL_Content"
+                baseColumnNames="confidential_level"
+                constraintName="FK_Content_conf_level"
+                referencedTableName="ORG_CONFIDENTIAL_LEVEL"
+                referencedColumnNames="CONFIDENTIAL_LEVEL_ID"
+        />
+        <addColumn tableName="DL_Content_AUD">
+            <column name="confidential_level" type="BIGINT">
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="06_add_description_col_to_content" author="ahmad">
+        <addColumn tableName="DL_CONTENT">
+            <column name="description" type="nvarchar(512)"></column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="06_add_description_col_to_content_aud" author="ahmad" failOnError="false">
+        <addColumn tableName="DL_CONTENT_AUD">
+            <column name="description" type="nvarchar(512)"></column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="07_add_system_setting_table" author="ahmad" failOnError="true">
+        <createTable tableName="DL_System_Setting">
+            <column name="id" type="nvarchar(255)">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="config_xml" type="nvarchar(2000)"></column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

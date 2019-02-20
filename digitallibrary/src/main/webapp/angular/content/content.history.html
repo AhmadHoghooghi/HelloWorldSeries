@@ -1,0 +1,20 @@
+<h4 class="ng-scope">{{message('btn_history_text')}} {{message('content_singular')}}</h4>
+<div class="list-block ng-scope">
+<table class="table ng-class ng-table">
+	<tbody><tr class="btn-back">
+  		<th><span class="pull-right">{{message('common_addaptive_modifier_label')}}</span></th>
+  		<th><span class="pull-right">{{message('common_adaptive_editor_datetimeeditor')}}</span></th>
+		<th></th>
+	</tr>
+	<tr ng-repeat="item in items">
+		<td class="ng-binding">{{item.revInfo.committerName}}</td>
+		<td class="ng-binding">{{item.revInfo.revisionDateStr}}</td>
+		<td><button ng-click="showVersion(items[$index].entity.pk ,items[$index].revInfo.revisionNumber)" class="btn btn-list"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+	</tr>
+</tbody></table>
+</div>
+<div class="row">
+	<div data-ng-hide="actions.common.params.getParam('hideButtons')" class="col-xs-12">
+		<button data-ng-click="back()" class="btn btn-default btn-fix-size pull-left">{{message('btn_back_text')}}</button>
+	<div>
+</div>

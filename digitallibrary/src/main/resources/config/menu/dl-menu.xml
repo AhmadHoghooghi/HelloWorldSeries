@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns="http://asta.ir/core/portal/menu/menuparser" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      host="/portal/index#/dl/" prefix="dl.">
+    <tab activity-codes="" id="root" title="کتابخانه دیجیتال">
+        <menu-item activity-codes="dl.library.list" id="libraryList" title="لیست کتابخانه ها" url="library/list"/>
+        <menu-item activity-codes="dl.content.list" id="contentList" title="لیست محتواها" url="content/list"/>
+        <menu-group activity-codes="" id="dl-menugroup-base-entities" title="اطلاعات پایه" url="">
+            <menu-item activity-codes="dl.attachmenttype.list" id="attachmentTypeList" title="لیست انواع ضمیمه"
+            url="attachmenttype/list"/>
+
+            <menu-item activity-codes="dl.contenttype.list" id="contentTypeList" title="لیست انواع محتوا"
+            url="contenttype/list"/>
+        </menu-group>
+        <menu-item activity-codes="dl.systemsetting.update" id="systemSetting_edit" title="تنظیمات سیستم" url="systemsetting/edit"/>
+    </tab>
+</menu>

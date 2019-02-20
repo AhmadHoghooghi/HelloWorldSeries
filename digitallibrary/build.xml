@@ -1,0 +1,106 @@
+<project name="dl" basedir="." xmlns:artifact="urn:maven-artifact-ant" default="tomcat-deploy">
+
+	<property environment="env" />
+	<property name="webapp.name" value="dl" />
+	<property name="project.dir" value="${basedir}" />
+	
+	<available file="${env.WISE_SPL}/ant-macros.xml" property="spl.home" value="${env.WISE_SPL}"  />
+	<available file="../ir.asta.wise.spl/ant-macros.xml" property="spl.home" value="../ir.asta.wise.spl" />
+	<import file="${spl.home}/ant-macros-4.0.xml" />
+	
+	<target name="clean">
+		<clean-all />
+	</target>
+
+	<target name="update-eclipse-classpath">
+		<update-eclipse-classpath />
+	</target>
+
+	<target name="mvn-test">
+		<mvn-test />
+	</target>
+
+	<target name="tomcat-deploy">
+		<tomcat-deploy />
+	</target>
+	
+	<target name="tomcat-copy-minimal">
+			<tomcat-copy-minimal />
+	</target>
+	
+	<target name="tomcat-reload">
+		<tomcat-deploy />
+		<touch-deploy />
+	</target>
+	
+
+	<target name="mvn-install">
+		<mvn-install />
+	</target>
+	
+	<target name="mvn-deploy">
+		<mvn-deploy />
+	</target>
+
+	
+	<target name="dependency-tree">
+		<dependency-tree />
+	</target>
+
+	<target name="dependency-resolve">
+		<dependency-resolve />
+	</target>
+	
+	<target name="generate-entity-from-uml">
+		<artifact:mvn pom="pom.xml" mavenHome="${M2_HOME}" fork="true">
+			<sysproperty key="maven.multiModuleProjectDirectory" path="${M2_HOME}"/>
+			<arg value="wise:run-workflow" />
+			<arg value="-Dforce=true" />
+			<arg value="-DworkflowEngine=mwe" />
+			<arg value="-DworkflowDescriptor=xpand/workflow.mwe" />
+			<arg value="-DgenerateEntityFromUml=true" />
+		</artifact:mvn>
+	</target>
+		
+	<target name="generate-crud-from-entity">
+		<artifact:mvn pom="pom.xml" mavenHome="${M2_HOME}" fork="true">
+			<sysproperty key="maven.multiModuleProjectDirectory" path="${M2_HOME}"/>
+			<arg value="wise:run-workflow" />
+			<arg value="-Dforce=true" />
+			<arg value="-DworkflowEngine=mwe" />
+			<arg value="-DworkflowDescriptor=xpand/workflow.mwe" />
+			<arg value="-DgenerateCrudFromEntity=true" />
+		</artifact:mvn>
+	</target>
+	
+	<target name="generate-service">
+		<artifact:mvn pom="pom.xml" mavenHome="${M2_HOME}" fork="true">
+			<sysproperty key="maven.multiModuleProjectDirectory" path="${M2_HOME}"/>
+			<arg value="wise:service" />
+			<arg value="-Dforce=true" />
+			<arg value="-DrootOfPackage=ir.asta.sample.dl" />
+			<arg value="-DserviceName=Book" />
+			<arg value="-DserviceType=crud" />
+			<arg value="-DidFieldClass=String" />
+			<arg value="-DproviderType=rest" />
+			<arg value="-DworkflowEngine=mwe" />
+			<arg value="-DworkflowDescriptor=xpand/workflow.mwe" />
+		</artifact:mvn>
+	</target>
+		
+	<target name="generate-ui">
+		<artifact:mvn pom="pom.xml" mavenHome="${M2_HOME}" fork="true">
+			<sysproperty key="maven.multiModuleProjectDirectory" path="${M2_HOME}"/>
+			<arg value="wise:angular-ui" />
+			<arg value="-Dforce=true" />
+			<arg value="-DappName=dl" />
+			<arg value="-DentityName=book" />
+			<arg value="-DgenerateDisplayTemplate=false" />
+			<arg value="-Doverwrite=true" />
+			<arg value="-DworkflowEngine=mwe" />
+			<arg value="-DworkflowDescriptor=xpand/workflow.mwe" />
+		</artifact:mvn>
+	</target>
+</project>
+
+

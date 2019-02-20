@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<security-settings xmlns="http://asta.ir/core/portal/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   prefix="dl."
+                   xsi:schemaLocation="http://asta.ir/core/portal/security http://asta.ir/core/portal/security ">
+
+    <permission-categories>
+    </permission-categories>
+
+    <permission-subjects>
+        <!--
+        <subject code="log" title="وقايع" />
+         -->
+    </permission-subjects>
+
+    <permissions>
+
+        <activity code="root"  title="مدیریت کتابخانه دیجیتال"/>
+
+        <!--library-->
+        <activity code="library" parent="root" title="مدیریت کتابخانه ها"/>
+        <activity category="datamanagement-search" code="library.list" dependencies="contenttype.options" parent="library" title="لیست کتابخانه ها" viewable="true"/>
+        <activity category="datamanagement-search" code="library.options" parent="library" title="انتخاب کتابخانه" viewable="true"/>
+        <activity category="datamanagement-view" code="library.view" dependencies="library.list" parent="library" title="مشاهده کتابخانه" viewable="true"/>
+        <activity category="datamanagement-create" code="library.create" dependencies="contenttype.options" parent="library" title="ایجاد کتابخانه" viewable="true"/>
+        <activity category="datamanagement-update" code="library.update" dependencies="library.view,contenttype.options" parent="library" title="بروزرسانی کتابخانه" viewable="true"/>
+        <activity category="datamanagement-delete" code="library.delete" dependencies="library.list" parent="library" title="حذف کتابخانه" viewable="true"/>
+        <activity category="datamanagement-restore" code="library.restore" dependencies="library.list" parent="library" title="بازیابی کتابخانه" viewable="true"/>
+
+        <!--content-->
+        <activity code="content" parent="root" title="مدیریت محتواها"/>
+        <activity category="datamanagement-search" code="content.list" parent="content" title="لیست محتواها" viewable="true"/>
+        <activity category="datamanagement-search" code="content.options" parent="content" title="انتخاب محتوا" viewable="true"/>
+        <activity category="datamanagement-view" code="content.view" dependencies="content.list,attachment.list,attachment.view,attachment.create,attachment.update,attachment.delete,attachmenttype.options" parent="content" title="مشاهده محتوا" viewable="true"/>
+        <activity category="datamanagement-create" code="content.create" dependencies="library.options,contenttype.options,confidentialLevel.options" parent="content" title="ایجاد محتوا" viewable="true"/>
+        <activity category="datamanagement-update" code="content.update" dependencies="content.view,library.options,contenttype.options,confidentialLevel.options" parent="content" title="بروزرسانی محتوا" viewable="true"/>
+        <activity category="datamanagement-delete" code="content.delete" dependencies="content.list" parent="content" title="حذف محتوا" viewable="true"/>
+        <activity category="datamanagement-restore" code="content.restore" dependencies="content.list" parent="content" title="بازیابی محتوا" viewable="true"/>
+
+        <!--attachment type-->
+        <activity code="attachmenttype" parent="root" title="مدیریت انواع ضمیمه"/>
+        <activity category="datamanagement-search" code="attachmenttype.list" parent="attachmenttype" title="لیست انواع ضمیمه" viewable="true"/>
+        <activity category="datamanagement-search" code="attachmenttype.options" parent="attachmenttype" title="انتخاب نوع ضمیمه" viewable="true"/>
+        <activity category="datamanagement-view" code="attachmenttype.view" dependencies="attachmenttype.list" parent="attachmenttype" title="مشاهده نوع ضمیمه" viewable="true"/>
+        <activity category="datamanagement-create" code="attachmenttype.create" dependencies="contenttype.options" parent="attachmenttype" title="ایجاد نوع ضمیمه" viewable="true"/>
+        <activity category="datamanagement-update" code="attachmenttype.update" dependencies="attachmenttype.view,contenttype.options" parent="attachmenttype" title="بروزرسانی نوع ضمیمه" viewable="true"/>
+        <activity category="datamanagement-delete" code="attachmenttype.delete" dependencies="attachmenttype.list" parent="attachmenttype" title="حذف نوع ضمیمه" viewable="true"/>
+        <activity category="datamanagement-restore" code="attachmenttype.restore" dependencies="attachmenttype.list" parent="attachmenttype" title="بازیابی نوع ضمیمه" viewable="true"/>
+
+        <!--contenttype-->
+        <activity code="contenttype" parent="root" title="مدیریت انواع محتوا"/>
+        <activity category="datamanagement-search" code="contenttype.list" parent="contenttype" title="لیست انواع محتوا" viewable="true"/>
+        <activity category="datamanagement-search" code="contenttype.options" parent="contenttype" title="انتخاب نوع محتوا" viewable="true"/>
+        <activity category="datamanagement-view" code="contenttype.view" dependencies="contenttype.list" parent="contenttype" title="مشاهده نوع محتوا" viewable="true"/>
+        <activity category="datamanagement-create" code="contenttype.create" parent="contenttype" title="ایجاد نوع محتوا" viewable="true"/>
+        <activity category="datamanagement-update" code="contenttype.update" dependencies="contenttype.view" parent="contenttype" title="بروزرسانی نوع محتوا" viewable="true"/>
+        <activity category="datamanagement-delete" code="contenttype.delete" dependencies="contenttype.list" parent="contenttype" title="حذف نوع محتوا" viewable="true"/>
+        <activity category="datamanagement-restore" code="contenttype.restore" dependencies="contenttype.list" parent="contenttype" title="بازیابی نوع محتوا" viewable="true"/>
+
+        <!--attachment-->
+        <activity code="attachment" parent="root" title="مدیریت ضمایم"/>
+        <activity category="datamanagement-search" code="attachment.list" parent="attachment" title="لیست ضمایم" viewable="true"/>
+        <activity category="datamanagement-search" code="attachment.options" parent="attachment" title="انتخاب ضمیمه" viewable="true"/>
+        <activity category="datamanagement-view" code="attachment.view" dependencies="attachment.list" parent="attachment" title="مشاهده ضمیمه" viewable="true"/>
+        <activity category="datamanagement-create" code="attachment.create" dependencies="attachmenttype.options" parent="attachment" title="ایجاد ضمیمه" viewable="true"/>
+        <activity category="datamanagement-update" code="attachment.update" dependencies="attachment.view,attachmenttype.options" parent="attachment" title="بروزرسانی ضمیمه" viewable="true"/>
+        <activity category="datamanagement-delete" code="attachment.delete" dependencies="attachment.list" parent="attachment" title="حذف ضمیمه" viewable="true"/>
+
+
+        <!--system setting-->
+        <activity code="systemsetting" parent="root" title="مدیریت تنظیمات سیستم"/>
+        <activity category="datamanagement-search" code="systemsetting.list" parent="attachment" title="لیست تنظیمات سیستم" viewable="true"/>
+        <activity category="datamanagement-view" code="systemsetting.view" parent="attachment" title="مشاهده تنظیمات سیستم" viewable="true"/>
+        <activity category="datamanagement-update" code="systemsetting.update" dependencies="systemsetting.view" parent="attachment" title="بروزرسانی تنظیمات سیستم" viewable="true"/>
+
+        <!--Special Permissions-->
+        <activity category="datamanagement-update" code="special_permissions"  parent="root" title="دسترسی های ویژه" viewable="true"/>
+        <activity category="datamanagement-update" code="content.change-status" dependencies="content.list,content.view" parent="special_permissions" title="تغییر وضعیت محتواها" viewable="true"/>
+        <activity category="datamanagement-search" code="confidentialLevel.options"  parent="special_permissions" title="انتخاب سطح محرمانگی" viewable="true"/>
+    </permissions>
+
+    <roles>
+        <role code="dl_operator" title="کارشناس کتابخانه" directAssignToUser="false"
+              role-permissions="dl.content.list,dl.content.view,dl.content.create,dl.content.update,dl.confidentialLevel.options,dl.attachment.list,dl.attachment.view,dl.attachment.create,dl.attachment.update,dl.attachment.delete,dl.library.options,dl.contenttype.options,dl.attachmenttype.options"/>
+        <role code="dl_admin" title="مدیر کتابخانه" directAssignToUser="false" role-permissions="dl.content,dl.attachment.list,dl.attachment.view,dl.attachment.create,dl.attachment.update,dl.attachment.delete,dl.confidentialLevel.options,dl.contenttype.options,dl.library.options,dl.attachmenttype.options,dl.content.change-status"/>
+        <role code="dl_head" title="راهبر کتابخانه" directAssignToUser="true" role-permissions="dl.root,portal.root"/>
+        <!--
+        <role code="ROLE_NEW"   title="نقش جدید" directAssignToUser="true" role-permissions="dl.root" />
+         -->
+    </roles>
+
+    <superusers>
+        <!--
+            <superuser username="root" password="root" first-name="مدير"
+                last-name="سيستم پورتال"
+                user-roles="ROLE_ADMIN,ROLE_NEW" enabled="true" />
+         -->
+        <!--<superuser username="dloperator" password="root8899" first-name="کارشناس کتابخانه"-->
+                   <!--last-name="دیجیتال"-->
+                   <!--user-roles="dl_operator" enabled="true" />-->
+        <!--<superuser username="dladmin" password="root8899" first-name="مدیر کتابخانه"-->
+                   <!--last-name="دیجیتال"-->
+                   <!--user-roles="dl_admin" enabled="true" />-->
+        <!--<superuser username="dlhead" password="root8899" first-name="راهبر کتابخانه"-->
+                   <!--last-name="دیجیتال"-->
+                   <!--user-roles="dl_head" enabled="true" />-->
+    </superusers>
+
+</security-settings>

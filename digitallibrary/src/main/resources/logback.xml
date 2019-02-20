@@ -1,0 +1,22 @@
+<configuration scan="true" scanPeriod="30 seconds" > 
+
+	<contextName>dl</contextName>
+	<jmxConfigurator />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d{HH:mm:ss} %-5level [%contextName/%X{username:-nouser}] %logger{40} -| %msg %rEx%n</pattern>
+		</encoder>
+	</appender>
+	
+	<root level="warn">
+		<appender-ref ref="STDOUT" />
+	</root>
+	<!-- 
+	<logger name="ir.asta.tutorial.dl" level="INFO"  /> 
+	 -->
+	<logger name="org.hibernate.type" level="ERROR"  />
+	<logger name="liquibase" level="INFO"  />
+
+</configuration>

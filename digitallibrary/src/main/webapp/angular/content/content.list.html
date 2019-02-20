@@ -1,0 +1,424 @@
+<div class="list-block" data-ng-init="close_search_panel = false;">
+    <div class="list-search-block">
+        <div class="row no-margin-bottom">
+            <div class="col-md-6 col-xs-6 col-sm-6">
+                <h3 class="pull-right min-padding-right" data-ng-hide="actions.common.params.getParam('hideFormTitle')">
+                    <span>{{formTitle}}</span>
+                </h3>
+            </div>
+            <div class="col-md-6 col-xs-6 col-sm-6" data-ng-hide="actions.common.params.getParam('hideSearchPanel')">
+                <button class="btn search btn-search pull-left" id="btnSearch"
+                        data-ng-click="close_search_panel = !close_search_panel;" style="margin-top:20px;"
+                        data-popover-trigger="mouseenter"
+                        data-popover="{{close_search_panel ? message('common.open') : message('common.close')}}"
+                        data-popover-placement="bottom">
+                    <i class="glyphicon glyphicon-search"></i>
+                    <h6 class="no-margin-top">
+                        <span>{{message('btn_search_text')}}</span>
+                    </h6>
+                    <i data-ng-class="close_search_panel ? 'down-arrow' : 'up-arrow'" id="arrow"></i>
+                </button>
+            </div>
+        </div>
+        <div data-ng-hide="close_search_panel || actions.common.params.getParam('hideSearchPanel')" class="main-back">
+            <form novalidate>
+                <fieldset>
+                    <div class="row max-margin-top">
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4 col-xs-12">
+                                    <!-- other:text -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                                <label for="search_content_code" class="control-label">{{message("content_code")}}</label>
+                                            </div>
+                                            <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                                <input type="text" data-ng-model="filter['eq:code']"
+                                                       id="search_content_code" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-xs-12">
+                                    <!-- other:text -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                                <label for="search_content_title" class="control-label">{{message("content_title")}}</label>
+                                            </div>
+                                            <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                                <input type="text" data-ng-model="filter['like:title']"
+                                                       id="search_content_title" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-xs-12"
+                                     data-ng-init="actions.common.fillDate('from_purchaseDate')">
+                                    <!-- date || dateTime -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                                <label for="search_content_from_purchaseDate" class="control-label">{{message("content_purchaseDate")}}
+                                                    {{message('common_from')}}</label>
+                                            </div>
+                                            <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control border-radius-right"
+                                                           id="search_content_from_purchaseDate"
+                                                           datepicker-popup-persian="yyyy/MM/dd" date-disabled="false"
+                                                           data-ng-model="filter['ge:purchaseDate']"
+                                                           is-open="widget.from_purchaseDate.isOpen"
+                                                           data-ng-required="true" show-button-bar="false"
+                                                           datepicker-options="widget.from_purchaseDate.options"
+                                                           close-on-date-selection="true">
+                                                    <span class="input-group-addon"
+                                                          data-ng-click="widget.from_purchaseDate.openDate($event)">
+	                                <span class="glyphicon glyphicon-calendar"></span>
+	                              </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-xs-12"
+                                     data-ng-init="actions.common.fillDate('to_purchaseDate')"><!-- date -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                                <label for="search_content_to_purchaseDate" class="control-label">{{message("content_purchaseDate")}}
+                                                    {{message('common_to')}}</label>
+                                            </div>
+                                            <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control border-radius-right"
+                                                           id="search_content_to_purchaseDate"
+                                                           datepicker-popup-persian="yyyy/MM/dd" date-disabled="false"
+                                                           data-ng-model="filter['le:purchaseDate']"
+                                                           is-open="widget.to_purchaseDate.isOpen"
+                                                           data-ng-required="true" show-button-bar="false"
+                                                           datepicker-options="widget.to_purchaseDate.options"
+                                                           close-on-date-selection="true">
+                                                    <span class="input-group-addon"
+                                                          data-ng-click="widget.to_purchaseDate.openDate($event)">
+	                                <span class="glyphicon glyphicon-calendar"></span>
+	                              </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-xs-12"><!-- enum -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                                <label for="search_content_status" class="control-label">{{message("content_status")}}</label>
+                                            </div>
+                                            <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                                <select name="edit_content_status" id="search_content_status"
+                                                        data-ng-model="filter['eq:status']" class="form-control">
+                                                    <option value="" data-ng-selected="data.status == null">---</option>
+                                                    <option data-ng-repeat="item in data.enums.status"
+                                                            value="{{item.pk}}"
+                                                            data-ng-selected="data.status == item.pk">{{item.toStr}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-xs-12">
+                                    <!-- boolean -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                                <label class="control-label" for="search_content_deleted">{{message("content_deleted")}}</label>
+                                            </div>
+                                            <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                                <select data-ng-model="filter['eq:deleted']" id="search_content_deleted"
+                                                        class="form-control">
+                                                    <option value="" selected="selected">---</option>
+                                                    <option value="true">{{message('common_is')}}</option>
+                                                    <option value="false">{{message('common_isNot')}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-4 col-xs-12">
+                                    <!-- other:text: serial -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                                <label for="search_content_serial" class="control-label">{{message("content_serial")}}</label>
+                                            </div>
+                                            <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                                <input type="text" data-ng-model="filter['eq:serial']"
+                                                       id="search_content_serial" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-4 col-xs-12"><!-- M2O/M2M suggest -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                                <label for="search_content_library" class="control-label">{{message("content_library")}}</label>
+                                            </div>
+                                            <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                                <ui-select data-ng-model="filter['eq:library.pk']"
+                                                           search-enabled="true">
+                                                    <ui-select-match allow-clear>{{$select.selected.toStr}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="item.pk as item in widget.library.items | filter: $select.search"
+                                                            refresh="actions.common.refreshSuggest('library','library', $select.search, 10)"
+                                                            refresh-delay="0">{{item.toStr}}
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6 col-md-4 col-xs-12"><!-- M2O/M2M suggest -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                                <label for="search_content_contentType" class="control-label">{{message("content_contentType")}}</label>
+                                            </div>
+                                            <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                                <ui-select data-ng-model="filter['eq:contentType.pk']"
+                                                           search-enabled="true"
+                                                           data-ng-change="filter.adaptiveDataModel={}">
+                                                    <ui-select-match allow-clear>{{$select.selected.toStr}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices
+                                                            repeat="item.pk as item in widget.contentType.items | filter: $select.search"
+                                                            refresh="actions.common.refreshSuggest('contentType','contentType', $select.search, 10)"
+                                                            refresh-delay="0">{{item.toStr}}
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6 col-md-4 col-xs-12"><!-- content_confidential_level -->
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                                <label for="search_content_confidentialLevel" class="control-label">{{message("content_confidential_level")}}</label>
+                                            </div>
+                                            <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                                <select
+                                                        name="search_content_confidentialLevel"
+                                                        class="form-control"
+                                                        data-ng-model="filter['eq:confidentialLevel.pk']"
+                                                        id="search_content_confidentialLevel"
+                                                        data-ng-options="cl.pk as cl.toStr for cl in data.options.confidentialLevels"
+                                                >
+                                                    <option value="" data-ng-selected="filter['eq:confidentialLevel.pk'] == null">---</option>
+                                                    <option data-ng-repeat="item in data.options.confidentialLevels"
+                                                            value="{{item.pk}}"
+                                                            data-ng-selected="filter['eq:confidentialLevel.pk'] == item.pk">
+                                                        {{item.toStr}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <adaptive-widget data-ng-model="filter.adaptiveDataModel" adaptive-name="contentType"
+                                                 adaptive-id="filter['eq:contentType.pk']" type="SEARCH">
+                                </adaptive-widget>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row max-margin-bottom">
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <button data-ng-click="actions.list.clearSearch()" type="button"
+                                    class="btn btn-success btn-fix-size pull-left">
+                                {{message('common_all')}}
+                            </button>
+                            <button data-ng-click="actions.list.search()"
+                                    class="btn btn-primary btn-fix-size pull-left no-margin-top max-margin-left">
+                                {{message('btn_search_text')}}
+                            </button>
+
+                            <button data-ng-click="showReportDialog()"
+                                    class="btn btn-primary btn-fix-size pull-left no-margin-top max-margin-left"
+                                    style="width: 200px;"
+                            >
+                                {{message('btn_content_distribution_report')}}
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="list-table-block">
+        <div class="bs-component">
+            <table data-ng-table="widget.tableParams" class="table" template-pagination="ng-table/crud-pager"
+                   template-header="ng-table/my-header">
+                <tbody>
+                <tr data-ng-repeat="data_row in $data track by data_row.pk"
+                    data-ng-class="{'active' : $data[$index].$selected,'danger':data_row.deleted == true && !$data[$index].$selected}">
+                    <td header="'ng-table/all-checkbox'"
+                        data-ng-click="params.settings().selectedItemsChanged($index,$event)">
+                        <input type="checkbox" name="selected" data-ng-checked="$data[$index].$selected">
+                    </td>
+                    <td data-title="message('content_code')" sortable="'code'"
+                        data-ng-click="params.settings().selectedItemsChanged($index,$event)">{{data_row.code }}
+                    </td>
+                    <td data-title="message('content_title')" sortable="'title'"
+                        data-ng-click="params.settings().selectedItemsChanged($index,$event)">{{data_row.title }}
+                    </td>
+                    <td data-title="message('content_purchaseDate')" sortable="'purchaseDate'"
+                        data-ng-click="params.settings().selectedItemsChanged($index,$event)">
+                        <span dir="ltr" class="pull-right">{{data_row.purchaseDate | persianDate:'yyyy/MM/dd'}}</span>
+                    </td>
+                    <td data-title="message('content_status')" sortable="'status'"
+                        data-ng-click="params.settings().selectedItemsChanged($index,$event)">{{data_row.statusStr }}
+                    </td>
+                    <td data-title="message('content_library')" sortable="'library'"
+                        data-ng-click="params.settings().selectedItemsChanged($index,$event)">
+                        <div class="tags">
+                            <ul class="tag-list tag-list-view">
+                                <li class="tag-item" data-ng-show="data_row.library">{{data_row.library.toStr}}</li>
+                            </ul>
+                        </div>
+                    </td>
+                    <td data-title="message('content_serial')" sortable="'serial'"
+                        data-ng-click="params.settings().selectedItemsChanged($index,$event)">{{data_row.serial }}
+                    </td>
+                    <td data-title="message('content_confidential_level')" sortable="'confidentialLevel'"
+                        data-ng-click="params.settings().selectedItemsChanged($index,$event)">
+                        {{data_row.confidentialLevel.toStr }}
+                    </td>
+                    <td>
+                        <!--<button data-ng-click="delete(data_row.pk)" class="btn-icon-delete" data-toggle="tooltip" data-original-title="remove"></button>-->
+                        <button data-ng-click="edit(data_row.pk)" class="btn btn-list"
+                                data-popover-trigger="mouseenter"
+                                data-ng-show="data.permissions.updatable"
+                                data-popover="{{message('btn_edit_text')}}">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </button>
+                        <button data-ng-click="display(data_row.pk)" class="btn btn-list"
+                                data-popover-trigger="mouseenter"
+                                data-ng-show="data.permissions.viewable"
+                                data-popover="{{message('btn_view_text')}}">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </button>
+                        <button data-ng-click="changeStatusOfThisContent(data_row.pk)" class="btn btn-list"
+                                data-popover-trigger="mouseenter"
+                                data-ng-show="data.permissions.viewable"
+                                data-popover="{{message('btn_change_status_text')}}"
+                                data-ng-disabled="!((data.permissions['content.change-status']==true) && (data_row.status==='IN_PROCESS'))"
+                        >
+                            <span class="glyphicon glyphicon-adjust"></span>
+                        </button>
+                    </td>
+                </tr>
+                <tr style="margin:0px;padding:0px;line-height:0.001pt;font-size:0.001pt;">
+                    <td colspan="1000" style="margin:0px;padding:0px;line-height:0.001pt;font-size:0.001pt;">&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/ng-template" id="ng-table/my-header">
+    <tr>
+        <td colspan="1000" style="padding-left:0;padding-right:0;">
+            <div class="btn-back" data-ng-hide="params.settings().hasSelected" style="height:50px;"
+                 data-ng-if="(!actions.common.params.getParam('hideButtons')&&data.permissions.creatable) || params.settings().counts.length">
+                <div style="direction: ltr" data-ng-if="params.settings().counts.length">
+                    <div class="ng-table-counts btn-group pull-right">
+                        <ul class="pagination pagination-sm  no-margin pull-left">
+                            <li data-ng-repeat="count in params.settings().getFilteredCounts()" data-ng-click="params.count()==count||params.settings().setPageSize(count)"
+                                data-ng-class="{'disabled':params.count()==count}"
+                                data-ng-style="{'cursor':params.count()!=count?'pointer':'default'}">
+                                <a 	data-ng-style="{'cursor':params.count()!=count?'pointer':'default'}" data-popover-trigger="mouseenter"
+                                      data-popover="{{message('common_all_pages')}} {{count}}">
+                                    <span data-ng-style="{'cursor':params.count()!=count?'pointer':'default'}" data-ng-bind="count"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="direction: rtl" data-ng-hide="actions.common.params.getParam('hideButtons')">
+                    <a data-ng-show="data.permissions.creatable"
+                       data-ng-click="createEntity()" class="btn btn-fix-size btn-primary">{{message('btn_create_text')}}
+                    </a>
+                </div>
+            </div>
+            <div class="alert-table pull-right" data-ng-show="params.settings().hasSelected">
+                <div class="select-row pull-right">
+                    <h6>
+                        {{params.settings().getSelectedItems().length}} {{params.settings().getSelectedItems().length>1?message('list_delete_some_items'):message('list_delete_one_item')}}
+                    </h6>
+                </div>
+                <div class="select-delete pull-right"
+                     data-ng-show="data.permissions.deletable && (!params.settings().hasNonDeletedInSelectedItems || params.settings().hasNonDeletedInSelectedItems())"
+                     data-ng-click="deleteEntities()">
+                    <a>
+                        <h6>{{message('btn_delete_text')}}</h6>
+                    </a>
+                </div>
+                <div class="select-delete pull-right" style="width: 140px"
+                     data-ng-show="data.permissions['content.change-status'] && allSelectedItemsAreIN_PROCESS()"
+                     data-ng-click="changeStatusOfEntities()">
+                    <a>
+                        <h6>{{message('btn_change_status')}}</h6>
+                    </a>
+                </div>
+                <div class="select-recovery pull-right"
+                     data-ng-show="data.permissions.restorable && (!params.settings().hasDeletedInSelectedItems || params.settings().hasDeletedInSelectedItems())"
+                     data-ng-click="restoreEntities()">
+                    <a>
+                        <h6>{{message('btn_restore_text')}}</h6>
+                    </a>
+                </div>
+                <div class="select-recovery pull-right" data-ng-show="data.permissions.purgable" data-ng-click="purgeEntities()">
+                    <a>
+                        <h6>{{message('btn_purge_text')}}</h6>
+                    </a>
+                </div>
+
+                <div data-ng-click="params.settings().clearSelection()" data-popover-trigger="mouseenter" data-popover="{{message('common.close')}}" class="icon-close-second pull-left">
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr class="btn-back">
+        <th class="th-select" data-ng-repeat="$column in $columns"
+            data-ng-class="{ 'sortable': $column.sortable(this), 'sort-asc': params.sorting()[$column.sortable(this)]=='asc', 'sort-desc': params.sorting()[$column.sortable(this)]=='desc' }"
+            data-ng-click="sortBy($column, $event)" data-ng-show="$column.show(this)" data-ng-init="template=$column.headerTemplateURL(this)" class="header {{$column.class(this)}}">
+    <span data-ng-if="!template" data-ng-show="!template" class="ng-table-header" data-ng-bind="$column.title(this)"
+          data-ng-class="{'sort-indicator': params.settings().sortingIndicator=='span'}"
+          style="display:block;float:right"></span>
+
+            <div data-ng-if="!template" data-ng-show="!template" class="ng-table-header" data-ng-class="{'sort-indicator': params.settings().sortingIndicator=='div'}"
+                 style="display:block;float:left">
+            </div>
+            <div data-ng-if="template" data-ng-show="template" data-ng-include="template"></div>
+        </th>
+    </tr>
+    <tr data-ng-show="show_filter" class="ng-table-filters">
+        <th data-title-text="{{$column.titleAlt(this) || $column.title(this)}}" data-ng-repeat="$column in $columns" data-ng-show="$column.show(this)" class="filter">
+            <div data-ng-repeat="(name, filter) in $column.filter(this)">
+                <div data-ng-if="filter.indexOf('/') !==-1" data-ng-include="filter"></div>
+                <div data-ng-if="filter.indexOf('/')===-1" data-ng-include="'ng-table/filters/' + filter + '.html'"></div>
+            </div>
+        </th>
+    </tr>
+</script>

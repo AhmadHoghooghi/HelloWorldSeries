@@ -1,0 +1,52 @@
+<style>
+    .reportTable th:hover {
+        background: white!important;
+    }
+
+    .reportTable th,.reportTable td{
+        border-style:solid ;
+        border-width: 1px;
+        border-color: black;
+        text-align: center;
+        font-size: 1.2em;
+        padding: 1px;
+    }
+</style>
+<div class="edit-block">
+    <div class="panel-heading background-black max-padding "
+         data-ng-hide="actions.common.params.getParam('hideFormTitle')">
+        <h3 class="panel-title color-white">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span>{{message("content_report_form_title")}}</span>
+            <i class="icon-close  pull-left" data-ng-click="actions.dismiss()"></i>
+        </h3>
+    </div>
+    <div class="panel-body">
+        <form id="contentEditForm" data-ng-submit="save('')" novalidate>
+            <table style="width: 50%;margin: auto" class="reportTable">
+                <thead>
+                <tr>
+                    <th style="">نوع محتوا</th>
+                    <th style=":hover{background: white}">تعداد</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in data.reportItems">
+                    <td>{{item.contentType.title}}</td>
+                    <td>{{item.count}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <div class="panel-footer" data-ng-hide="actions.common.params.getParam('hideButtons')">
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-default btn-fix-size pull-left" data-ng-click="actions.dismiss()">
+                    {{message('btn_back_text')}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

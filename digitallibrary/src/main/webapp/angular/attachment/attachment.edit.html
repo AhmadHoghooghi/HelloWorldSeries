@@ -1,0 +1,93 @@
+<div class="edit-block">
+  <div class="panel-heading background-black max-padding " data-ng-hide="actions.common.params.getParam('hideFormTitle')">
+    <h3 class="panel-title color-white">
+      <span class="glyphicon glyphicon-pencil"></span>
+      <span>{{formTitle}}</span>
+      <i class="icon-close  pull-left" data-ng-click="back()"></i>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <form id="attachmentEditForm" data-ng-submit="save('content')" novalidate>
+      <fieldset>
+        <div class="row"><!-- other:text -->
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2 col-xs-12 no-padding">
+                  <label for="edit_attachment_code" class="control-label required-input">{{message("attachment_code")}}</label>
+                </div>
+                <div class="col-md-10 col-xs-12">
+                  <input name="edit_attachment_code" type="text" data-ng-model="data.code" id="edit_attachment_code" class="form-control" required/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"><!-- other:text -->
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2 col-xs-12 no-padding">
+                  <label for="edit_attachment_title" class="control-label required-input">{{message("attachment_title")}}</label>
+                </div>
+                <div class="col-md-10 col-xs-12">
+                  <input name="edit_attachment_title" type="text" data-ng-model="data.title" id="edit_attachment_title" class="form-control" required/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"><!-- file -->
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2 col-xs-12 no-padding">
+                  <label for="edit_attachment_file" class="control-label required-input">{{message("attachment_file")}}</label>
+                </div>
+                <div class="col-md-10 col-xs-12">
+                  <input id="edit_attachment_file" name="edit_attachment_file" type="file" data-ngf-select data-ngf-change="actions.common.onFileChange($files,'file')"
+                         data-ngf-multiple="false" required/>
+                  <div>{{widget.file.message}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"><!-- suggest -->
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2 col-xs-12 no-padding">
+                  <label for="edit_attachment_attachmentType" class="control-label required-input">{{message("attachment_attachmentType")}}</label>
+                </div>
+                <div class="col-md-10 col-xs-12">
+                  <ui-select data-ng-model="data.attachmentType" search-enabled="true" data-rule-ngmodelrequired="true">
+                    <ui-select-match allow-clear>{{$select.selected.toStr}}</ui-select-match>
+                    <ui-select-choices repeat="item as item in widget.attachmentType.items | filter: $select.search"
+                                       refresh="actions.common.refreshSuggestForAttachmentType('attachmentType','attachmentType', $select.search, 10)"
+                                       refresh-delay="0">{{item.toStr}}
+                    </ui-select-choices>
+                  </ui-select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        	<!--we don't show master field in detail edit form-->
+		
+        
+        
+        
+      </fieldset>
+    </form>
+  </div>
+  <div class="panel-footer" data-ng-hide="actions.common.params.getParam('hideButtons')">
+    <div class="row">
+      <div class="col-md-8"></div>
+      <div class="col-md-4">
+        <button type="button" class="btn btn-default btn-fix-size pull-left" data-ng-click="back()">{{message('btn_back_text')}}</button>
+        <button type="submit" class="btn btn-primary btn-fix-size pull-left min-margin-left" data-ng-click="save('content')">{{message('btn_save_text')}}</button>
+      </div>
+    </div>
+  </div>
+</div>

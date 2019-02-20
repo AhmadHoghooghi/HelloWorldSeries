@@ -1,0 +1,72 @@
+<div class="edit-block">
+  <div class="panel-heading background-black max-padding " data-ng-hide="actions.common.params.getParam('hideFormTitle')">
+    <h3 class="panel-title color-white">
+      <span class="glyphicon glyphicon-pencil"></span>
+      <span>{{formTitle}}</span>
+      <i class="icon-close  pull-left" data-ng-click="back()"></i>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <form id="libraryEditForm" data-ng-submit="save('')" novalidate>
+      <fieldset>
+        <div class="row"><!-- other:text -->
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2 col-xs-12 no-padding">
+                  <label for="edit_library_title" class="control-label required-input">{{message("library_title")}}</label>
+                </div>
+                <div class="col-md-10 col-xs-12">
+                  <input name="edit_library_title" type="text" data-ng-model="data.title" id="edit_library_title" class="form-control"  required/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"><!-- other:text -->
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2 col-xs-12 no-padding">
+                  <label for="edit_library_code" class="control-label required-input">{{message("library_code")}}</label>
+                </div>
+                <div class="col-md-10 col-xs-12">
+                  <input name="edit_library_code" type="text" data-ng-model="data.code" id="edit_library_code" class="form-control" required/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"><!-- combo -->
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2 col-xs-12 no-padding">
+                  <label for="edit_library_contentType" class="control-label required-input">{{message("library_contentType")}}</label>
+                </div>
+                <div class="col-md-10 col-xs-12">
+                  <select name="edit_library_contentType" id="edit_library_contentType" data-ng-options="item.pk as item.toStr for item in data.options.contentType.items" class="form-control" data-ng-model="data.contentType.pk" required>
+                    <option value="" data-ng-selected="data.contentType.pk == null">---</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+        
+        
+        
+      </fieldset>
+    </form>
+  </div>
+  <div class="panel-footer" data-ng-hide="actions.common.params.getParam('hideButtons')">
+    <div class="row">
+      <div class="col-md-8"></div>
+      <div class="col-md-4">
+        <button type="button" class="btn btn-default btn-fix-size pull-left" data-ng-click="back()">{{message('btn_back_text')}}</button>
+        <button type="submit" class="btn btn-primary btn-fix-size pull-left min-margin-left" data-ng-click="save('')">{{message('btn_save_text')}}</button>
+      </div>
+    </div>
+  </div>
+</div>

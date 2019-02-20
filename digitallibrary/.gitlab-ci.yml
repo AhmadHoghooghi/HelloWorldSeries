@@ -1,0 +1,48 @@
+variables:
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -DdeployAtEnd=true"
+
+    
+stages:
+    - build
+    - test
+    - deploy
+ 
+    
+build:
+  stage: build
+  script:
+    - VERSION=9.1.0.WS
+    - |
+       if [[ $VERSION == *"SNAPSHOT"* ]]; then
+        - mvn $MAVEN_CLI_OPTS clean compile
+       fi
+  except:
+    - tags
+ 
+    
+test:
+  stage: test
+  script:
+    - VERSION=9.1.0.WS
+    - |
+       if [[ $VERSION == *"SNAPSHOT"* ]]; then
+        - mvn $MAVEN_CLI_OPTS test
+       fi
+  except:
+    - tags
+
+
+deploy:
+  stage: deploy
+  script:
+    - VERSION=9.1.0.WS
+    - |
+       if [[ $VERSION == *"SNAPSHOT"* ]]; then
+        - mvn -Dmaven.test.skip=true $MAVEN_CLI_OPTS clean deploy
+       fi
+  only:
+    - master
+    - /^releases-.+/
+    - /^release-.+/
+    
+

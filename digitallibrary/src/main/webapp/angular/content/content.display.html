@@ -1,0 +1,245 @@
+<link rel="stylesheet" href="/dl/css/textAngular.css">
+<link rel="stylesheet" href="/dl/css/all.css">
+<div>
+    <div class="display-block">
+        <div class="row max-padding" data-ng-hide="actions.common.params.getParam('hideFormTitle')">
+            <div class="col-md-12">
+                <h3>
+                    <span>{{formTitle}}</span>
+                    <small title="{{message('content_deleted')}}" data-ng-show="data.deleted"
+                           class="text-danger"></small>
+                </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-body main-back">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4 col-xs-12"><!-- other:text -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_code")}}</label>
+                                        </div>
+                                        <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                            <div class="form-control input-sm input-back-silver">
+                                                {{data.code}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-xs-12"><!-- other:text -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_title")}}</label>
+                                        </div>
+                                        <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                            <div class="form-control input-sm input-back-silver">
+                                                {{data.title}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-xs-12"><!-- file -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_file")}}</label>
+                                        </div>
+                                        <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                            <div class="form-control input-sm input-back-silver">
+                                                <a ng-href="{{actions.common.getDownloadLink('file', data.pk)}}">{{data.file.fileName}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-xs-12"><!-- date -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_purchaseDate")}}</label>
+                                        </div>
+                                        <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                            <div class="form-control input-sm input-back-silver">
+                                                <span dir="ltr" class="pull-right">{{data.purchaseDate | persianDate:'yyyy/MM/dd'}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-xs-12"><!-- other:combo -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_status")}}</label>
+                                        </div>
+                                        <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                            <div class="form-control input-sm input-back-silver">
+                                                {{data.statusStr}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-xs-12"><!-- date -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_creationTime")}}</label>
+                                        </div>
+                                        <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                            <div class="form-control input-sm input-back-silver">
+                                                <span dir="ltr" class="pull-right">{{data.creationTime | persianDate:'yyyy/MM/dd'}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-xs-12"><!-- date -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_lastModificationTime")}}</label>
+                                        </div>
+                                        <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                            <div class="form-control input-sm input-back-silver">
+                                                <span dir="ltr" class="pull-right">{{data.lastModificationTime | persianDate:'yyyy/MM/dd'}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-xs-12"><!-- combo -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_contentType")}}</label>
+                                        </div>
+                                        <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                            <div class="form-control input-sm input-back-silver">
+                                                <div class="tags">
+                                                    <ul class="tag-list tag-list-view">
+                                                        <li class="tag-item" data-ng-show="data.contentType">
+                                                            {{data.contentType.toStr}}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4 col-xs-12"><!-- combo -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_library")}}</label>
+                                        </div>
+                                        <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                            <div class="form-control input-sm input-back-silver">
+                                                <div class="tags">
+                                                    <ul class="tag-list tag-list-view">
+                                                        <li class="tag-item" data-ng-show="data.library">
+                                                            {{data.library.toStr}}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--serial-->
+                            <div class="col-sm-6 col-md-4 col-xs-12"><!-- other:text -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_serial")}}</label>
+                                        </div>
+                                        <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                            <div class="form-control input-sm input-back-silver">
+                                                {{data.serial}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--confidential level-->
+                            <div class="col-sm-6 col-md-4 col-xs-12"><!-- other:text -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_confidential_level")}}</label>
+                                        </div>
+                                        <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                                            <div class="form-control input-sm input-back-silver">
+                                                {{data.confidentialLevel.toStr}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="col-sm-12"><!-- other:description -->
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="field  col-md-1 col-sm-2 col-xs-12 no-padding">
+                                            <label class="control-label">{{message("content_description")}}</label>
+                                        </div>
+                                        <div class="field col-md-11 col-sm-10 col-xs-12">
+                                            <div ng-bind-html="data.description">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <adaptive-widget data-ng-model="data.adaptiveDataModel" adaptive-name="content"
+                                             rest-prefix="/dl/rest"
+                                             adaptive-id="data.content.pk" type="VIEW"
+                                             container-class="col-md-4 col-sm-6 col-xs-12"
+                                             label-class="field col-lg-3 col-md-3 col-xs-12 no-padding"
+                                             input-class="field col-lg-9 col-md-9 col-xs-12">
+                            </adaptive-widget>
+
+                            <hr style="clear:both">
+                            <adaptive-widget data-ng-model="data.adaptiveDataModel" adaptive-name="contentType"
+                                             adaptive-id="data.contentType.pk" type="VIEW">
+                            </adaptive-widget>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12" data-ng-hide="actions.common.params.getParam('hideButtons')">
+                <button data-ng-click="back('')" class="btn btn-default btn-fix-size pull-left">
+                    {{message('btn_back_text')}}
+                </button>
+                <button data-ng-click="edit()" data-ng-show="data.permissions.updatable"
+                        class="btn btn-primary btn-fix-size pull-left min-margin-left">{{message('btn_edit_text')}}
+                </button>
+                <button data-ng-click="ShowHistory()"
+                        class="btn btn-default pull-left btn-fix-size pull-left max-margin-left">
+                    {{message('btn_history_text')}}
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <!--            -->
+    <dynamic-form template="/dl/angular/attachment/attachment.list.html" controller="AttachmentListCtrl"
+                  params="attachmentParams">
+    </dynamic-form>
+
+
+</div>

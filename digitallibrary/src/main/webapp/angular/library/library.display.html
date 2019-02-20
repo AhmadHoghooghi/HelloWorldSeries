@@ -1,0 +1,110 @@
+<div>
+  <div class="display-block">
+    <div class="row max-padding" data-ng-hide="actions.common.params.getParam('hideFormTitle')">
+      <div class="col-md-12">
+        <h3>
+          <span>{{formTitle}}</span>
+          <small title="{{message('library_deleted')}}" data-ng-show="data.deleted" class="text-danger"></small>
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-body main-back">
+            <div class="row">
+              <div class="col-sm-6 col-md-4 col-xs-12"><!-- other:text -->
+                <div class="form-group">
+                  <div class="row">
+                    <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                      <label class="control-label">{{message("library_title")}}</label>
+                    </div>
+                    <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                      <div class="form-control input-sm input-back-silver">
+                        {{data.title}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xs-12"><!-- other:text -->
+                <div class="form-group">
+                  <div class="row">
+                    <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                      <label class="control-label">{{message("library_code")}}</label>
+                    </div>
+                    <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                      <div class="form-control input-sm input-back-silver">
+                        {{data.code}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xs-12"><!-- date -->
+                <div class="form-group">
+                  <div class="row">
+                    <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                      <label class="control-label">{{message("library_creationTime")}}</label>
+                    </div>
+                    <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                      <div class="form-control input-sm input-back-silver">
+                        <span dir="ltr" class="pull-right">{{data.creationTime | persianDate:'yyyy/MM/dd'}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xs-12"><!-- date -->
+                <div class="form-group">
+                  <div class="row">
+                    <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                      <label class="control-label">{{message("library_lastModificationTime")}}</label>
+                    </div>
+                    <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                      <div class="form-control input-sm input-back-silver">
+                        <span dir="ltr" class="pull-right">{{data.lastModificationTime | persianDate:'yyyy/MM/dd'}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xs-12"><!-- combo -->
+                <div class="form-group">
+                  <div class="row">
+                    <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                      <label class="control-label">{{message("library_contentType")}}</label>
+                    </div>
+                    <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                      <div class="form-control input-sm input-back-silver">
+                        <div class="tags">
+                          <ul class="tag-list tag-list-view">
+                            <li class="tag-item" data-ng-show="data.contentType">{{data.contentType.toStr}}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5"></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12" data-ng-hide="actions.common.params.getParam('hideButtons')">
+        <button data-ng-click="back('')" class="btn btn-default btn-fix-size pull-left">{{message('btn_back_text')}}</button>
+        <button data-ng-click="edit()" data-ng-show="data.permissions.updatable" class="btn btn-primary btn-fix-size pull-left min-margin-left">{{message('btn_edit_text')}}</button>
+        
+      </div>
+    </div>
+  </div>
+  <!--            -->
+  
+  
+</div>

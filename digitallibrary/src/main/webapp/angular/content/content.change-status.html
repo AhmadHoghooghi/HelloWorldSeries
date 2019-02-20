@@ -1,0 +1,52 @@
+<div class="edit-block">
+    <div class="panel-heading background-black max-padding "
+         data-ng-hide="actions.common.params.getParam('hideFormTitle')">
+        <h3 class="panel-title color-white">
+            <span class="glyphicon glyphicon-pencil"></span>
+            <span>{{formTitle}}</span>
+            <i class="icon-close  pull-left" data-ng-click="actions.dismiss()"></i>
+        </h3>
+    </div>
+    <div class="panel-body">
+        <form id="contentEditForm" data-ng-submit="save('')" novalidate>
+            <fieldset>
+                <div class="row"><!-- other:text -->
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-2 col-xs-12 no-padding">
+                                    <label for="edit_content_status"
+                                           class="control-label required-input">{{message("content_status")}}</label>
+                                </div>
+                                <div class="col-md-10 col-xs-12">
+                                    <select name="edit_content_status" id="edit_content_status"
+                                            data-ng-model="parameters.newStatus" class="form-control">
+                                        <option data-ng-repeat="item in data.enums.status"
+                                                value="{{item.pk}}"
+                                                data-ng-selected="'IN_PROCESS' === item.pk">{{item.toStr}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </fieldset>
+        </form>
+    </div>
+    <div class="panel-footer" data-ng-hide="actions.common.params.getParam('hideButtons')">
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <button type="button" class="btn btn-default btn-fix-size pull-left" data-ng-click="actions.dismiss()">
+                    {{message('btn_back_text')}}
+                </button>
+                <button type="submit" class="btn btn-primary btn-fix-size pull-left min-margin-left"
+                        data-ng-click="actions.save()">{{message('btn_save_text')}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

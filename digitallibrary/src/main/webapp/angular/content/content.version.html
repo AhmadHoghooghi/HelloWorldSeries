@@ -1,0 +1,125 @@
+<div class="row">
+    <div class="col-md-4"><h4>{{message('btn_version_text')}} {{message('content_singular')}}</h4></div>
+</div>
+<div class="panel panel-default max-margin-top">
+  <div class="panel-body main-back">
+            <div class="col-sm-6 col-md-4 col-xs-12"><!-- other:text -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                    <label class="control-label pull-left">{{message("content_code")}}</label>
+                  </div>
+                  <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                    <div class="form-control input-sm input-back-silver">
+                      {{data.code}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xs-12"><!-- other:text -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                    <label class="control-label pull-left">{{message("content_title")}}</label>
+                  </div>
+                  <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                    <div class="form-control input-sm input-back-silver">
+                      {{data.title}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xs-12"><!-- file -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                    <label class="control-label pull-left">{{message("content_file")}}</label>
+                  </div>
+                  <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                    <div class="form-control input-sm input-back-silver">
+                      <a ng-href="{{actions.common.getDownloadLink('file', data.pk)}}">{{data.file.fileName}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xs-12"><!-- date -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                    <label class="control-label pull-left">{{message("content_purchaseDate")}}</label>
+                  </div>
+                  <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                    <div class="form-control input-sm input-back-silver">
+                      <span><em>{{data.purchaseDate | persianDate:'fullDate' }}</em></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xs-12"><!-- other:combo -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                    <label class="control-label pull-left">{{message("content_status")}}</label>
+                  </div>
+                  <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                    <div class="form-control input-sm input-back-silver">
+                      {{data.statusStr}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xs-12"><!-- date -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                    <label class="control-label pull-left">{{message("content_creationTime")}}</label>
+                  </div>
+                  <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                    <div class="form-control input-sm input-back-silver">
+                      <span><em>{{data.creationTime | persianDate:'fullDate' }}</em></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xs-12"><!-- date -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                    <label class="control-label pull-left">{{message("content_lastModificationTime")}}</label>
+                  </div>
+                  <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                    <div class="form-control input-sm input-back-silver">
+                      <span><em>{{data.lastModificationTime | persianDate:'fullDate' }}</em></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-xs-12"><!-- boolean -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="field col-lg-4 col-md-5 col-sm-3 col-xs-12 no-padding">
+                    <label class="control-label pull-left">{{message('content_deleted')}}</label>
+                  </div>
+                  <div class="field col-lg-8 col-md-7 col-sm-9 col-xs-12">
+                    <div class="form-control input-sm input-back-silver">
+                      <span data-ng-show="data.deleted">{{message('common_is')}}</span>
+                      <span data-ng-hide="data.deleted">{{message('common_isNot')}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  </div>
+</div>
+<div class="row">
+	<div data-ng-hide="actions.common.params.getParam('hideButtons')" class="col-xs-12">
+		<button data-ng-click="back()" class="btn btn-default btn-fix-size pull-left">{{message('btn_back_text')}}</button>
+	<div>
+</div>

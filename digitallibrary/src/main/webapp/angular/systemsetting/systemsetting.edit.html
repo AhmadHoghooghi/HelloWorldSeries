@@ -1,0 +1,48 @@
+<h3 class="no-margin-top" style="margin-top: 20px; margin-right: 68px;">
+    {{message('system_setting_form_title')}}
+</h3>
+<form id="systemsettingEditForm" data-ng-submit="save('')" novalidate>
+    <fieldset>
+        <div class="row"><!-- other:text -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 col-xs-12 no-padding">
+                            <label for="edit_systemsetting_validFileTypes" class="control-label">{{message("systemSetting_validFileTypes")}}</label>
+                        </div>
+                        <div class="col-md-10 col-xs-12">
+                            <input name="edit_systemsetting_validFileTypes" type="text"
+                                   data-ng-model="data.config.validFileTypes" id="edit_systemsetting_validFileTypes"
+                                   class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row"><!-- other:text -->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2 col-xs-12 no-padding">
+                            <label for="edit_systemsetting_maxSizeKB" class="control-label">{{message("systemSetting_maxSizeKB")}}</label>
+                        </div>
+                        <div class="col-md-10 col-xs-12">
+                            <input name="edit_systemsetting_maxSizeKB" type="text" data-ng-model="data.config.maxSizeKB"
+                                   id="edit_systemsetting_maxSizeKB" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </fieldset>
+</form>
+
+<button type="button" class="btn btn-default btn-fix-size pull-left" data-ng-click="back()">
+    {{message('btn_back_text')}}
+</button>
+<button type="button" class="btn btn-primary btn-fix-size pull-left min-margin-left" data-ng-click="save()">
+    {{message('btn_save_text')}}
+</button>
+

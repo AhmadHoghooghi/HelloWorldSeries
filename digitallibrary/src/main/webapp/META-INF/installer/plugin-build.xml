@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="portal-install" basedir=".">
+	<target name="input">
+		<propertyfile file="${workspace.config.dir}/dl.properties">
+		</propertyfile>
+	</target>
+
+	<target name="pre-copy">
+	</target>
+
+	<target name="update">
+		<antcall target="copy" />
+	</target>
+
+	<target name="copy">
+
+		<property file="${workspace.config.dir}/appserver.properties" />
+		<property file="${workspace.config.dir}/portal.properties" />
+		<property file="${workspace.config.dir}/dl.properties" />
+
+		<property name="dl.deploy.dir" value="${appserver.deploy.dir}/dl.war" />
+		<property name="dl.webapp.deploy.dir" value="${dl.deploy.dir}" />
+		<property name="portal.plugin.dir" value="${installer.plugins.dir}/portal" />
+
+		<mkdir dir="${dl.webapp.deploy.dir}" />
+		<mkdir dir="${dl.webapp.deploy.dir}/WEB-INF/lib" />
+
+		<unjar dest="${dl.webapp.deploy.dir}" src="${plugin.dir}/dl.war" overwrite="true" />
+		<fileset id="newlib" dir="${plugin.dir}/lib">
+			<different targetdir="${appserver.lib.dir}" ignoreFileTimes="true" />
+			<exclude name="**/jsp-api*.jar" />
+			<exclude name="**/servlet-api*.jar" />
+			<exclude name="**/jta*.jar" />
+		</fileset>
+		<copy todir="${dl.webapp.deploy.dir}/WEB-INF/lib" verbose="true" >
+			<fileset refid="newlib" />
+			<mapper type="flatten" />
+		</copy>
+	</target>
+
+	<target name="config">
+		<property file="${workspace.config.dir}/appserver.properties" />
+		<property file="${workspace.config.dir}/portal.properties" />
+		<property file="${workspace.config.dir}/dl.properties" />
+	</target>
+
+	<target name="post-config">
+	</target>
+
+	<target name="db-migrate">
+	</target>
+
+</project>
