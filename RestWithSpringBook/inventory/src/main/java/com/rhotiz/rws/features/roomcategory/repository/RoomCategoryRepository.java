@@ -12,4 +12,7 @@ public interface RoomCategoryRepository {
     void delete(Long id);
     RoomCategory save(RoomCategory room);
     List<RoomCategory> getAll();
+    List<RoomCategory> findAllInRange(Long startIndex,Long num);
+
+    Long countAll();
 }

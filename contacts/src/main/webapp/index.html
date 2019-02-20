@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="fa" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Avan">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>پروژه اعوان</title>
+    <!--css-->
+    <link rel="stylesheet" type="text/css" href="_assets/css/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="_assets/css/bootstrap/css/bootstrap.rtl.css">
+    <link rel="stylesheet" type="text/css" href="_assets/css/dialogs.min.css">
+    <link rel="stylesheet" type="text/css" href="_assets/css/angular/angular-flash.css">
+    <link rel="stylesheet" type="text/css" href="_assets/css/customizations.css">
+    <link rel="stylesheet" type="text/css" href="_assets/css/ADM-dateTimePicker.min.css">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <!--js-->
+    <script src="_assets/js/jquery.min.js"></script>
+    <script src="_assets/js/angular.min.js"></script>
+    <script src="_assets/js/angular-resource.js"></script>
+    <script src="_assets/js/angular-sanitize.js"></script>
+    <script src="_assets/js/angular-animate.js"></script>
+    <script src="_assets/js/angular-touch.js"></script>
+    <script src="_assets/js/angular-route.min.js"></script>
+    <script src="_assets/js/angular-flash.js"></script>
+    <script src="_assets/js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="_assets/js/dialogs.min.js"></script>
+    <script src="_assets/js/utils.js"></script>
+    <script src="_assets/js/ADM-dateTimePicker.min.js"></script>
+    <script src="_assets/js/moment-with-locales.js"></script>
+    <script src="_assets/js/jalali-moments-browser.js"></script>
+    <script src="_assets/js/moment-timezone-with-data-2012-2022.js"></script>
+
+    <script src="app.js"></script>
+    <script src="contact/contact.module.js"></script>
+    <script src="contact/contact.services.js"></script>
+    <script src="contact/contact.controller.js"></script>
+
+    <script src="event/event.module.js"></script>
+    <script src="event/event.service.js"></script>
+    <script src="event/event.controller.js"></script>
+</head>
+<body style="direction:rtl" >
+    <div style="height: 100%" class="container"  ng-app="contacts" >
+        <a href="#/" class="btn btn-primary">خانه</a>
+        <a href="#/contact/list" class="btn  btn-primary">مخاطبین</a>
+        <a href="#/event/list" class="btn  btn-primary">رویدادها</a>
+        <flash-message name="flash-in-index">
+        </flash-message>
+        <div ng-view></div>
+    </div>
+
+</body>
+</html>

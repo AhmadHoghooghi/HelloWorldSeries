@@ -1,0 +1,94 @@
+<h2>شاخص‌های جستجو</h2>
+<form>
+    <div class="row">
+        <div class="col-xs-12  form-group">
+            <div class="col-xs-12 col-sm-2 col-md-2">
+                <label for="eventTitle">عنوان</label>
+            </div>
+            <div class="col-xs-12 col-sm-10 col md-10">
+                <input class="form-control" type="text" id="eventTitle" ng-model="filter.title">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6 form-group">
+            <div class="col-xs-12 col-sm-2 col-md-4">
+                <label for="eventStartFrom">شروع رویداد از</label>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-8 force-ltr">
+                <adm-dtp options="controls.datePickerOptions" ng-model="filter.eventStartFrom" id="eventStartFrom"
+                full-data="eventStartFrom_detail" maxdate="{{eventStartTo_detail.unix}}"
+                ></adm-dtp>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 form-group">
+            <div class="col-xs-12 col-sm-2 col-md-4">
+                <label for="eventEndFrom">اتمام رویداد از</label>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-8 force-ltr">
+                <adm-dtp options="controls.datePickerOptions" ng-model="filter.eventEndFrom" id="eventEndFrom"
+                full-data="eventEndFrom_detail" maxdate="{{eventEndTo_detail.unix}}"
+                ></adm-dtp>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6 form-group">
+            <div class="col-xs-12 col-sm-2 col-md-4 ">
+                <label for="eventStartTo">شروع رویداد تا</label>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-8 force-ltr">
+                <adm-dtp options="controls.datePickerOptions" ng-model="filter.eventStartTo" id="eventStartTo"
+                full-data="eventStartTo_detail" mindate="{{eventStartFrom_detail.unix}}"
+                ></adm-dtp>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 form-group">
+            <div class="col-xs-12 col-sm-2 col-md-4">
+                <label for="eventEndTo">اتمام رویداد تا</label>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-8 force-ltr">
+                <adm-dtp  options="controls.datePickerOptions" ng-model="filter.eventEndTo" id="eventEndTo"
+                full-data="eventEndTo_detail" mindate="{{eventEndFrom_detail.unix}}"
+                ></adm-dtp>
+            </div>
+        </div>
+    </div>
+    <div style="display: inline;float: left; margin-left: 15px">
+        <button type="submit" class="btn btn-primary text-left" ng-click="actions.search();">جستجو</button>
+        <button type="button" class="btn btn-success text-left" ng-click="actions.list();">همه موارد</button>
+    </div>
+    <a ng-click="actions.showSaveOrUpdateDialog(0)" class="btn btn-primary">ایجاد</a>
+</form>
+
+<h2> رویدادها </h2>
+<div>
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered table-responsive">
+            <tr>
+                <th>عنوان</th>
+                <th>زمان شروع</th>
+                <th>زمان اتمام</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="event in data.events" style="max-height: fit-content;">
+                <td>{{event.title}}</td>
+                <td class="force-ltr">{{event.startDateTime}}</td>
+                <td class="force-ltr">{{event.endDateTime}}</td>
+                <td class="text-center">
+                    <a href="#/event/display/{{event.id}}">
+                        <span class="glyphicon glyphicon-eye-open btn operationBtn"></span>
+                    </a>
+
+                    <span ng-click="actions.showSaveOrUpdateDialog(event.id)"
+                          class="glyphicon glyphicon-edit btn operationBtn">
+                    </span>
+
+                    <span class="glyphicon glyphicon-remove btn operationBtn" ng-click="actions.delete(event.id);">
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

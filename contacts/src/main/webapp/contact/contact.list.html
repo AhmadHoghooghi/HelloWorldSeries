@@ -1,0 +1,79 @@
+<h2> شاخص‌های جستجو</h2>
+<form>
+    <div class="row">
+        <div class="col-xs-12 col-md-6 form-group">
+            <div class="col-xs-12 col-sm-2">
+                <label for="contactName">نام</label>
+            </div>
+            <div class="col-xs-12 col-sm-10 ">
+                <input class="form-control" type="text" id="contactName" ng-model="name">
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 form-group">
+            <div class="col-xs-12 col-sm-2">
+                <label for="contactHomePhone">تلفن</label>
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <input class="form-control" type="text" id="contactHomePhone" ng-model="homePhone">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6 form-group">
+            <div class="col-xs-12 col-sm-2">
+                <label for="contactMobile">موبایل</label>
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <input class="form-control" type="text" id="contactMobile" ng-model="mobile">
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6 form-group">
+            <div class="col-xs-12 col-sm-2">
+                <label for="contactEmail">رایانامه</label>
+            </div>
+            <div class="col-xs-12 col-sm-10">
+                <input class="form-control" type="text" id="contactEmail" ng-model="email">
+            </div>
+        </div>
+    </div>
+    <div style="display: inline;float: left; margin-left: 15px">
+        <button type="submit" class="btn btn-primary text-left" ng-click="search();">جستجو</button>
+        <button type="button" class="btn btn-success text-left" ng-click="findAll();">همه موارد</button>
+    </div>
+</form>
+
+
+<h2> مخاطبین </h2>
+<div>
+    <div style="margin-left: 15px">
+        <table class="table table-striped table-bordered table-responsive">
+            <tr>
+                <th>نام</th>
+                <th>آدرس</th>
+                <th>شماره تلفن</th>
+                <th>موبایل</th>
+                <th>رایانامه</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="contact in contacts" style="max-height: fit-content;">
+                <td>{{contact.name}}</td>
+                <td>{{contact.address}}</td>
+                <td class="text-left-imp">{{contact.homePhone}}</td>
+                <td class="text-left-imp">{{contact.mobile}}</td>
+                <td class="text-left-imp">{{contact.email}}</td>
+                <td class="text-center">
+                    <a href="#/contact/display/{{contact.id}}">
+                        <span class="glyphicon glyphicon-eye-open btn operationBtn"></span>
+                    </a>
+
+                    <span ng-click="showSaveOrUpdateDialog(contact.id)"
+                          class="glyphicon glyphicon-edit btn operationBtn">
+                    </span>
+
+                    <span class="glyphicon glyphicon-remove btn operationBtn" ng-click="remove(contact.id);">
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

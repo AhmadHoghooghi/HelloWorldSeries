@@ -1,0 +1,39 @@
+table tr th {
+    text-align: center;
+}
+
+table tr td , table tr th {
+    vertical-align: middle !important;
+}
+.operationBtn{
+    color: #0f0f0f;
+}
+.operationBtn:hover{
+    color: #265a88;
+}
+
+@font-face {
+    font-family: "Vazir";
+    src: url("fonts/Vazir.eot");
+    src:
+            url("fonts/Vazir.woff2") format('woff2'),
+            url("fonts/Vazir.woff") format('woff'),
+            url("fonts/Vazir.ttf") format('ttf')
+;
+}
+body {
+    font-family: 'Vazir', Arial, sans-serif !important;
+}
+
+.text-left-imp {
+    text-align: left !important;
+
+}
+
+.force-ltr{
+    direction: ltr;
+}
+
+.silver-back {
+    background-color: #eeeef1;
+}

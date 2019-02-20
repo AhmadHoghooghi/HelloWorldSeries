@@ -10,6 +10,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Repository
 @Transactional
@@ -51,4 +53,26 @@ public class RoomCategoryRepositoryImpl implements RoomCategoryRepository {
         resultList.forEach(obj->roomList.add((RoomCategory) obj ));
         return roomList;
     }
+
+    @Override
+    public List<RoomCategory> findAllInRange(Long startIndex, Long maxResults) {
+        String queryString = "select rc from RoomCategory as rc";
+        Query query = em.createQuery(queryString);
+        query.setFirstResult(startIndex.intValue());
+        query.setMaxResults(maxResults.intValue());
+        List queryResultList = query.getResultList();
+        List<RoomCategory> rooms  =new ArrayList<>();
+        queryResultList.stream().forEach(obj -> rooms.add((RoomCategory) obj));
+        return rooms;
+    }
+
+    @Override
+    public Long countAll() {
+        String queryString = "select count(rc) from RoomCategory as rc";
+        Query query = em.createQuery(queryString);
+        Long count = (Long)query.getSingleResult();
+        return count;
+    }
+
+
 }

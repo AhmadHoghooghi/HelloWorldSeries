@@ -1,5 +1,6 @@
 package com.rhotiz.rws.features.room.repository;
 
+import com.rhotiz.rws.features.room.exceptions.RoomNotFoundException;
 import com.rhotiz.rws.model.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,6 +25,9 @@ public class RoomRepositoryImpl implements RoomRepository {
     @Override
     public void update(Room room) {
         Room dbRoom = find(room.getId());
+        if (dbRoom == null) {
+            throw new RoomNotFoundException(room.getId());
+        }
         dbRoom.setName(room.getName());
         dbRoom.setDescription(room.getDescription());
         em.merge(dbRoom);
@@ -33,7 +37,10 @@ public class RoomRepositoryImpl implements RoomRepository {
     public void delete(Long id) {
         Query query = em.createQuery("delete from com.rhotiz.rws.model.Room as room where room.id = :roomId");
         query.setParameter("roomId", id);
-        query.executeUpdate();
+        int i = query.executeUpdate();
+        if(i==0){
+            throw new RoomNotFoundException(id);
+        }
     }
 
     @Override
@@ -43,13 +50,44 @@ public class RoomRepositoryImpl implements RoomRepository {
     }
 
     @Override
+    public List<Room> findAll(Long startIndex, Long num) {
+        String queryString = "select room from Room as room order by room.id ";
+        Query query = em.createQuery(queryString);
+        query.setFirstResult(startIndex.intValue());
+        query.setMaxResults(num.intValue());
+        List resultList = query.getResultList();
+        return convertObjectListToRoomLIst(resultList);
+
+    }
+
+    private List<Room> convertObjectListToRoomLIst(List resultList) {
+        List<Room> roomList = new ArrayList<>();
+        resultList.forEach(obj -> roomList.add((Room) obj));
+        return roomList;
+    }
+
+    @Override
     public List<Room> getByCategoryId(Long id) {
         String queryString = "select room from Room as room where room.roomCategory.id = :id";
         Query query = em.createQuery(queryString);
         query.setParameter("id", id);
         List resultList = query.getResultList();
-        List<Room> roomList = new ArrayList<>();
-        resultList.forEach(obj->roomList.add((Room)obj ));
-        return roomList;
+        return convertObjectListToRoomLIst(resultList);
+    }
+
+    @Override
+    public Long countAll() {
+        String queryString = "select count(room) from Room as room";
+        Query query = em.createQuery(queryString);
+        Long count = (Long)query.getSingleResult();
+        return count;
+    }
+
+    @Override
+    public List<Room> findAll() {
+        String queryString = "select room from Room as room order by room.id ";
+        Query query = em.createQuery(queryString);
+        List resultList = query.getResultList();
+        return convertObjectListToRoomLIst(resultList);
     }
 }
