@@ -20,6 +20,8 @@
 
 * [ASTA-Exercise-2 ](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/exercise2/): Implementation of Exercise 2 of [ASTA](http://asta.ir/) on [JavaCup.ir](http://javacup.ir/javaee-exercise2/). A theree layer rest based web application is developed which has four features. entities has relationships like `OneToMany`, `ManyToOne` and `ManyToMany`. Configuration is based on wise Architecture. there are integration tests on manager layer and below. Server type H2 db is used.
 
+* [ASTA-Exercise-3 (Digital Library)](https://github.com/AhmadHoghooghi/HelloWorldSeries/tree/master/digitallibrary/): Implementation of Exercise 3 of [ASTA](http://asta.ir/) on ASTA wiki.
+
 # Tools
 ## Build Tools
 ### Gradle
