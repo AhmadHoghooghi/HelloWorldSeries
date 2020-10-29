@@ -18,7 +18,7 @@
 	<properties>
 		<appNameToLower>dl</appNameToLower>
 		<appNameToUpper>DL</appNameToUpper>
-		<wise-maven-plugin.version>9.2.0.WS-SNAPSHOT</wise-maven-plugin.version>
+		<wise-maven-plugin.version>9.2.0.WS</wise-maven-plugin.version>
 	</properties>
 
 	<dependencies>
